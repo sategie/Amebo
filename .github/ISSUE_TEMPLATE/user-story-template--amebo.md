@@ -7,8 +7,4 @@ assignees: ''
 
 ---
 
-Epic: <epic>
-
 As a **role** I can **capability** so that **received beneft**
-
-**Tasks**
