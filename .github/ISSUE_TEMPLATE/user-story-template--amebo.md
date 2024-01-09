@@ -1,7 +1,7 @@
 ---
 name: 'User Story Template: Amebo'
 about: Template designed to make the creation of user stories easier.
-title: ''
+title: 'USER STORY: <TITLE>'
 labels: ''
 assignees: ''
 
