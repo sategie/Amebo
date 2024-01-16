@@ -12,16 +12,16 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
-            <Nav.Link>
+            <Nav.Link className={styles.navLink}>
             <i class="fa-solid fa-house"></i>Home
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link className={styles.navLink}>
             <i className="fa-solid fa-square-rss"></i>Posts
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link className={styles.navLink}>
             <i class="fa-solid fa-right-to-bracket"></i>Login
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link className={styles.navLink}>
             <i class="fa-solid fa-user-plus"></i>Signup
             </Nav.Link>
           </Nav>
