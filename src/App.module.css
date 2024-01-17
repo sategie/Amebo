@@ -4,9 +4,17 @@
     min-height: 100vh;
   }
 
+  .Page {
+    padding-top: 15rem;
+  }
+
   * {
     box-sizing: border-box;
   }
+
+  html {
+    font-size: 62.5%;
+}
   
   a {
     color: #010A40;
