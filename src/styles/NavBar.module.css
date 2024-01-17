@@ -4,14 +4,24 @@
     font-size: 2rem;
   }
 
-  .navLink {
+
+  .NavLink {
     margin-right: 2rem;
-    color: #010A40 !important;
+    color: #212529;
+    padding: 0.5rem;
   }
 
   .navBrand {
     background-color: #55986f;
   }
+  
+  .Active i {
+    color: #55986f;
+  }
+
+
+
+
 
 
 

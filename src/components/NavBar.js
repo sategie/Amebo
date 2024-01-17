@@ -2,28 +2,31 @@ import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
     <Navbar className={styles.NavBar} expand="md" fixed="top">
+        <NavLink to="/">
         <Navbar.Brand className={styles.navBrand}>
           <img src={logo} alt="logo" height="100" />
         </Navbar.Brand>
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
-            <Nav.Link className={styles.navLink}>
+            <NavLink exact className={styles.NavLink} activeClassName={styles.Active} to="/">
             <i class="fa-solid fa-house"></i>Home
-            </Nav.Link>
-            <Nav.Link className={styles.navLink}>
+            </NavLink>
+            <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/posts">
             <i className="fa-solid fa-square-rss"></i>Posts
-            </Nav.Link>
-            <Nav.Link className={styles.navLink}>
+            </NavLink>
+            <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/login">
             <i class="fa-solid fa-right-to-bracket"></i>Login
-            </Nav.Link>
-            <Nav.Link className={styles.navLink}>
+            </NavLink>
+            <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/signup">
             <i class="fa-solid fa-user-plus"></i>Signup
-            </Nav.Link>
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
     </Navbar>

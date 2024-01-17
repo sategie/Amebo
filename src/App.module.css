@@ -2,6 +2,7 @@
     font-family: "Roboto", sans-serif;
     background-color: #f8f8f8;
     min-height: 100vh;
+    font-size: 2rem;
   }
 
   .Page {
@@ -17,17 +18,22 @@
 }
   
   a {
-    color: #010A40;
+    color: #212529;
     transition: color ease-in-out 0.3s;
   }
   
   a:hover {
     text-decoration: none;
+    color: #55986f;
   }
   
   a:hover i {
     color: #55986f;
     transition: color ease-in-out 0.3s;
+  }
+
+  a:active {
+    color: #55986f;
   }
   
   /* i {
