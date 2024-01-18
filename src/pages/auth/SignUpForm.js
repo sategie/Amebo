@@ -54,27 +54,31 @@ const SignUpForm = () => {
     <Form.Control className={styles.Input} type="text" placeholder="username" name="username" value={username} onChange={handleChange} />
   </Form.Group>
   {errors.username?.map((message,index) => 
-    <Alert variant="warning" key={index}>{message}</Alert>
+    <Alert variant="warning" key={index} className={styles.Alert}>{message}</Alert>
   )}
 
   <Form.Group controlId="password1">
     <Form.Label className="d-none">password</Form.Label>
     <Form.Control className={styles.Input} type="password" placeholder="password" name="password1" value={password1} onChange={handleChange} />
   </Form.Group>
+  {errors.password1?.map((message,index) => 
+    <Alert variant="warning" key={index} className={styles.Alert}>{message}</Alert>
+  )}
 
   <Form.Group controlId="password2">
     <Form.Label className="d-none">confirm password</Form.Label>
     <Form.Control className={styles.Input} type="password" placeholder="confirm password" name="password2" value={password2} onChange={handleChange} />
   </Form.Group>
+  {errors.password2?.map((message,index) => 
+    <Alert variant="warning" key={index} className={styles.Alert}>{message}</Alert>
+  )}
   
   <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
     Signup
   </Button>
-  {errors.non_field_errors?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className="mt-3">
-                {message}
-              </Alert>
-            ))}
+  {errors.non_field_errors?.map((message,index) => 
+    <Alert variant="warning" key={index} className={styles.Alert}>{message}</Alert>
+  )}
 </Form>
 
         </Container>
