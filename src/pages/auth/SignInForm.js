@@ -31,7 +31,7 @@ const SignInForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post("/dj-rest-auth/registration/", signInInfo);
+            await axios.post("/dj-rest-auth/login/", signInInfo);
             history.push("/");
         } catch(err) {
             // Use optional chaining to handle error display
@@ -86,7 +86,7 @@ const SignInForm = () => {
         <Image
           className={`${appStyles.FillerImage}`}
           src={
-            "https://res.cloudinary.com/dvfxz4as6/image/upload/v1705523404/nature_gxbcdr.jpg"
+            "https://res.cloudinary.com/dvfxz4as6/image/upload/v1705644496/nature2_qrpo04.jpg"
           }
         />
       </Col>
