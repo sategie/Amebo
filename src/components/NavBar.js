@@ -6,11 +6,15 @@ import { NavLink } from "react-router-dom";
 import { useActiveUser, useSetActiveUser } from "../contexts/ActiveUserContext";
 import Avatar from "./Avatar";
 import axios from "axios";
+import useOutsideClickToggle from "../hooks/useOutsideClickToggle";
 
 
 const NavBar = () => {
     const activeUser = useActiveUser();
     const setActiveUser = useSetActiveUser();
+    const {expanded, setExpanded, ref} = useOutsideClickToggle();
+ 
+    
 
     const handleLogOut = async() => {
         try{
@@ -57,13 +61,13 @@ const NavBar = () => {
 
 
   return (
-    <Navbar className={styles.NavBar} expand="md" fixed="top">
+    <Navbar expanded = {expanded} className={styles.NavBar} expand="md" fixed="top">
         <NavLink to="/">
         <Navbar.Brand className={styles.navBrand}>
           <img src={logo} alt="logo" height="100" />
         </Navbar.Brand>
         </NavLink>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle ref = {ref} onClick = {() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
             <NavLink exact className={styles.NavLink} activeClassName={styles.Active} to="/">
