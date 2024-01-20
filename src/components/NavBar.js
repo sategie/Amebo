@@ -3,12 +3,44 @@ import { Navbar, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { useActiveUser } from "../contexts/ActiveUserContext";
+import { useActiveUser, useSetActiveUser } from "../contexts/ActiveUserContext";
+import Avatar from "./Avatar";
+import axios from "axios";
 
 
 const NavBar = () => {
     const activeUser = useActiveUser();
-    const loggedInIcons = <>{activeUser?.username}</>;
+    const setActiveUser = useSetActiveUser();
+
+    const handleLogOut = async() => {
+        try{
+            await axios.post("dj-rest-auth/logout/");
+            setActiveUser(null);
+        } catch(err) {
+            console.log(err);
+        }
+    };
+
+    const loggedInIcons = (
+        <>
+        <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/create-post">
+        <i class="fa-solid fa-square-plus"></i>Create Post
+        </NavLink>
+        <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/followed-users">
+        <i class="fa-solid fa-people-group"></i>Followed Users
+        </NavLink>
+        <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/notifications">
+        <i class="fa-solid fa-bell"></i>Notifications
+        </NavLink>
+        <NavLink className={styles.NavLink} to="/" onClick={handleLogOut}>
+        <i class="fa-solid fa-user-plus"></i>Logout
+        </NavLink>
+        <NavLink className={styles.NavLink} to={`/profiles/${activeUser?.profile_id}`}>
+        <Avatar src={activeUser?.profile_image} text="Profile" height={40} />
+        </NavLink>
+    </>
+
+    )
 
 
     const loggedOutIcons = (
