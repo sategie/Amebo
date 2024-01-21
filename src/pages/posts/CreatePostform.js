@@ -36,30 +36,37 @@ function CreatePostForm() {
   );
 
   return (
-    <Form>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">
-              
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="image-upload"
-                >
-                  ASSET
-                </Form.Label>
-
-            </Form.Group>
-            <div className="d-md-none">{textFields}</div>
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
-        </Col>
-      </Row>
-    </Form>
+    <Form >
+  <Row>
+    <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+      <Container
+        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+      >
+        <Form.Group controlId="formBasicEmail" className="mb-3">
+          <Form.Label>Title</Form.Label>
+          <Form.Control type="text" placeholder="Enter post title" />
+        </Form.Group>
+        <Form.Group controlId="formBasicPassword" className="mb-3">
+          <Form.Label>Description</Form.Label>
+          <Form.Control as="textarea" rows={3} placeholder="Enter post description" />
+        </Form.Group>
+        <Form.Group>
+          <Form.File
+            id="image-upload"
+            label="Upload Image"
+            // onChange={handleUpload}
+            accept="image/*"
+            custom
+          />
+        </Form.Group>
+        <div className="d-md-none">{textFields}</div>
+      </Container>
+    </Col>
+    <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
+      <Container className={appStyles.Content}>{textFields}</Container>
+    </Col>
+  </Row>
+</Form>
   );
 }
 
