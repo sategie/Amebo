@@ -17,3 +17,15 @@
 .PlaceholderFontSize {
     font-size: 1.8rem;
 }
+
+.LargeButton {
+    font-size: 1.6rem;
+  }
+
+  /* .Container {
+    padding: 3rem 1rem;
+    border-radius: 1.5rem;
+    margin-left:2rem;
+    margin-right:2rem;
+
+  } */
