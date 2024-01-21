@@ -8,6 +8,7 @@ import appStyles from "../../App.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
+import Post from "./Post";
 
 function PostPage() {
     const { id } = useParams();
@@ -33,7 +34,7 @@ function PostPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Post component</p>
+        <Post {...post.results[0]} setPosts={setPost} PostPage />
         <Container className={appStyles.Content}>
           Comments
         </Container>
