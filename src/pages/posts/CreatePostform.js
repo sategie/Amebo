@@ -36,21 +36,21 @@ function CreatePostForm() {
   );
 
   return (
-    <Form >
+    <Form className={styles.Input}>
   <Row>
     <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
       <Container
         className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
       >
-        <Form.Group controlId="formBasicEmail" className="mb-3">
+        <Form.Group controlId="formBasicEmail" >
           <Form.Label>Title</Form.Label>
-          <Form.Control type="text" placeholder="Enter post title" />
+          <Form.Control type="text" placeholder="Enter post title" className={styles.PlaceholderFontSize} />
         </Form.Group>
-        <Form.Group controlId="formBasicPassword" className="mb-3">
+        <Form.Group controlId="formBasicPassword" >
           <Form.Label>Description</Form.Label>
-          <Form.Control as="textarea" rows={3} placeholder="Enter post description" />
+          <Form.Control as="textarea" rows={3} placeholder="Enter post description" className={styles.PlaceholderFontSize} />
         </Form.Group>
-        <Form.Group>
+        <Form.Group >
           <Form.File
             id="image-upload"
             label="Upload Image"
