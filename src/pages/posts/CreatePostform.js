@@ -116,12 +116,13 @@ function CreatePostForm() {
               className={`${appStyles.Content} d-flex justify-content-center align-items-center`}
             >
               <Button
-                className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.LargeButton}`}
+                className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.ButtonArea}`}
                 onClick={() => history.goBack()}
               >
                 Cancel
               </Button>
-              <Button className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.LargeButton}`} type="submit">
+
+              <Button className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.ButtonArea}`} type="submit">
                 Create
               </Button>
             </Container>

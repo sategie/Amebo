@@ -11,9 +11,9 @@
 
   .Content {
     background-color: #ffffff;
-    padding: 10px;
+    padding: 1rem;
     border-radius: 2px;
-    border: 1px solid #dadadf;
+    border: 0.1rem solid #dadadf;
   }
   
   .FillerImage {

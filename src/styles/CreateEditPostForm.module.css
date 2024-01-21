@@ -1,31 +1,45 @@
-.Container {
+  .Container {
     min-height: 20rem;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+    border: 0.1rem solid #55986f;
+  }
+  
+  .Input {
+    margin-bottom: 2rem;
+  }
+  
+  .PlaceholderFontSize {
+    font-size: 1.8rem;
   }
 
-  .Input {
-    background: #e8f5e9;
-    border: 0.1rem solid #c8e6c9;
-    box-sizing: border-box;
-    border-radius: 1rem;
-    color: #2e7d32;
-    text-align: center;
-    padding: 1rem;
-    margin-bottom: 2rem;
-    font-size: 1.8rem;
-}
-
-.PlaceholderFontSize {
-    font-size: 1.8rem;
-}
-
-.LargeButton {
+  .ButtonArea {
     font-size: 1.6rem;
   }
-
-  /* .Container {
-    padding: 3rem 1rem;
-    border-radius: 1.5rem;
-    margin-left:2rem;
-    margin-right:2rem;
-
-  } */
+  
+  .FormControl {
+    border-radius: 5px;
+    border: 0.1rem solid #ced4da;
+    padding: 1rem;
+    font-size: 2rem;
+  }
+  
+  /* These are overrides, ensure they're called after Bootstrap styles */
+  .Form-label {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  .Form-control,
+  .Form-control::placeholder {
+    color: #495057;
+  }
+  
+  .Form-control:focus {
+    border-color: #55986f;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
