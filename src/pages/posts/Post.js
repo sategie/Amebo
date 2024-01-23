@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { axiosRes } from '../../api/axiosDefaults';
 import Avatar from '../../components/Avatar';
 import { useActiveUser } from '../../contexts/ActiveUserContext';
 import styles from "../../styles/Post.module.css";
@@ -19,12 +20,48 @@ const Post = (props) => {
         updated_date,
         user,
         postPage,
+        setPosts
     
     } = props;
 
     const activeUser = useActiveUser();
 
     const is_own_post = activeUser?.username === user;
+
+    const handleLike = async() => {
+        try{
+            const {data} = await axiosRes.post("/likes/", {
+                post: id});
+            setPosts((prevPosts) => ({
+                ...prevPosts,
+                results: prevPosts.results.map((post) => {
+                    return post.id === id
+                    ? {...post, likes_count: post.likes_count +1, like_id: data.id}
+                    : post;
+                }),
+            }));
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const handleUnlike = async () => {
+        try {
+          await axiosRes.delete(`/likes/${like_id}/`);
+          setPosts((prevPosts) => ({
+            ...prevPosts,
+            results: prevPosts.results.map((post) => {
+              return post.id === id
+                ? { ...post, likes_count: post.likes_count - 1, like_id: null }
+                : post;
+            }),
+          }));
+        } catch (err) {
+          console.log(err);
+        }
+      }
+
+
 
   return (
     <Card className={styles.Post}>
@@ -62,11 +99,11 @@ const Post = (props) => {
                         <i className="far fa-heart" />
                     </OverlayTrigger>
                 ) : like_id ? (
-                    <span onClick={() => {}}>
+                    <span onClick={handleUnlike}>
                         <i className={`fas fa-heart ${styles.Heart}`} />
                     </span>
                 ) : activeUser ? (
-                    <span onClick={() => {}}>
+                    <span onClick={handleLike}>
                         <i className={`far fa-heart ${styles.HeartOutline}`} />
                     </span>
                 ) : (
