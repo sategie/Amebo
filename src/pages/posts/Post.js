@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosRes } from '../../api/axiosDefaults';
 import Avatar from '../../components/Avatar';
 import { useActiveUser } from '../../contexts/ActiveUserContext';
+import appStyles from "../../App.module.css";
 import styles from "../../styles/Post.module.css";
 
 const Post = (props) => {
@@ -84,7 +85,7 @@ const Post = (props) => {
             {post_content && <Card.Text>{post_content}</Card.Text>}
             <hr className={styles.ContentBorder} />
             <Link to={`/posts/${id}`}>
-                <Card.Img src={image} alt={title} />
+                <Card.Img src={image} alt={title} className={appStyles.Image} />
             </Link>
         </Card.Body>
         <hr className={styles.ContentBorder} />
