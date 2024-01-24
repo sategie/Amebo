@@ -17,6 +17,10 @@
     font-weight: bold;
   }
 
+  .Prompt {
+    font-size: 2.2rem;
+  }
+
   .ContentBorder {
     border-top: 1px solid #dadadf;
 }

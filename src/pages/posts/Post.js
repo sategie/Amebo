@@ -94,8 +94,8 @@ const Post = (props) => {
             <div className={styles.PostBar}>
                 {is_own_post ? (
                     <OverlayTrigger
-                        placement="top"
-                        overlay={<Tooltip>Sorry, you cannot like your own post!</Tooltip>}
+                        placement="left"
+                        overlay={<Tooltip className={appStyles.TooltipSize}>Sorry, you cannot like your own post!</Tooltip>}
                     >
                         <i className="far fa-heart" />
                     </OverlayTrigger>
@@ -109,8 +109,8 @@ const Post = (props) => {
                     </span>
                 ) : (
                     <OverlayTrigger
-                        placement="top"
-                        overlay={<Tooltip>You need to log in to like posts!</Tooltip>}
+                        placement="left"
+                        overlay={<Tooltip className={appStyles.TooltipSize}>You need to log in to like posts!</Tooltip>}
                     >
                         <i className="far fa-heart" />
                     </OverlayTrigger>
