@@ -30,7 +30,7 @@ function PostsList() {
     };
     const delaySearch = setTimeout(() => {
         fetchPosts();
-      }, 500);
+      }, 1000);
   
       return () => {
         clearTimeout(delaySearch);
