@@ -1,11 +1,12 @@
 import React from 'react'
 import { Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosRes } from '../../api/axiosDefaults';
 import Avatar from '../../components/Avatar';
 import { useActiveUser } from '../../contexts/ActiveUserContext';
 import appStyles from "../../App.module.css";
 import styles from "../../styles/Post.module.css";
+import { DropdownOption } from '../../components/DropdownOption';
 
 const Post = (props) => {
     const {
@@ -28,6 +29,21 @@ const Post = (props) => {
     const activeUser = useActiveUser();
 
     const is_own_post = activeUser?.username === user;
+
+    const history = useHistory();
+
+    const handleEdit = () => {
+        history.push(`/posts/${id}/edit`);
+    };
+
+    const handleDelete = async () => {
+        try {
+          await axiosRes.delete(`/posts/${id}/`);
+          history.goBack();
+        } catch (err) {
+          console.log(err);
+        }
+      };
 
     const handleLike = async() => {
         try{
@@ -63,7 +79,6 @@ const Post = (props) => {
       }
 
 
-
   return (
     <Card className={styles.Post}>
         <Card.Body>
@@ -74,7 +89,7 @@ const Post = (props) => {
                 </Link>
                 <div className="d-flex align-items-center">
                     <span>{updated_date}</span>
-                    {is_own_post && postPage && "..."}
+                    {is_own_post && postPage && <DropdownOption handleEdit={handleEdit} handleDelete={handleDelete} />}
                 </div>
             </Media>
         </Card.Body>

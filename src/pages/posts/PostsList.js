@@ -36,8 +36,7 @@ function PostsList() {
         clearTimeout(delaySearch);
       };
     }, [search]);
-
-
+    
 
   return (
     <Row className="h-100">
