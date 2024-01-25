@@ -20,7 +20,7 @@
   }
   
   .FormControl {
-    border-radius: 5px;
+    border-radius: 0.5rem;
     border: 0.1rem solid #ced4da;
     padding: 1rem;
     font-size: 2rem;
