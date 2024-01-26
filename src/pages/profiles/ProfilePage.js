@@ -96,13 +96,13 @@ function ProfilePage() {
     </>
   );
 
-  const mainProfilePosts = (
-    <>
-      <hr />
-      <p className="text-center">Profile owner's posts</p>
-      <hr />
-    </>
-  );
+//   const mainProfilePosts = (
+//     <>
+//       <hr />
+//       <p className="text-center">Profile owner's posts</p>
+//       <hr />
+//     </>
+//   );
 
   return (
     <Row>
@@ -112,7 +112,7 @@ function ProfilePage() {
           {hasLoaded ? (
             <>
               {mainProfile}
-              {mainProfilePosts}
+              {/* {mainProfilePosts} */}
             </>
           ) : (
             <Spinner animation="border" variant="success" role="status">
