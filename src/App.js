@@ -9,6 +9,7 @@ import CreatePostForm from "./pages/posts/CreatePostForm";
 import PostPage from "./pages/posts/PostPage";
 import PostsList from "./pages/posts/PostsList";
 import EditPostForm from "./pages/posts/EditPostForm";
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route exact path="/create-post" render={() => <CreatePostForm />} />
             <Route exact path="/posts/:id" render={() => <PostPage />} />
             <Route exact path="/posts/:id/edit" render={() => <EditPostForm />} />
+            <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
             <Route render={() => <p>Invalid Page!</p>} />
             </Switch>
         </Container>
