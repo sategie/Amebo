@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Media } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -6,13 +6,16 @@ import Avatar from "../../components/Avatar";
 import { DropdownOption } from "../../components/DropdownOption";
 import { useActiveUser } from "../../contexts/ActiveUserContext";
 import styles from "../../styles/Comment.module.css";
+import EditCommentForm from "./EditCommentForm";
 
 const Comment = (props) => {
-  const { profile_id, profile_image, user, updated_date, comment_content, id, setPost, setComments } = props;
+  const { profile_id, profile_image, user, updated_date, comment_content, id, post, setPost, setComments } = props;
+
+  const [showEditForm, setShowEditForm] = useState(false);
 
   const activeUser = useActiveUser();
 
-  const is_own_comment = activeUser?.username === user;
+  const own_comment = activeUser?.username === user;
 
   const handleDelete = async () => {
     try {
@@ -35,7 +38,7 @@ const Comment = (props) => {
 
 
   return (
-    <div>
+    <>
       <hr />
       <Media>
         <Link to={`/profiles/${profile_id}`}>
@@ -44,13 +47,28 @@ const Comment = (props) => {
         <Media.Body className="align-self-center ml-2">
           <span className={styles.Owner}>{user}</span>
           <span className={styles.Date}>{updated_date}</span>
-          <p>{comment_content}</p>
+          {showEditForm ? (
+            <EditCommentForm
+            id={id}
+            profile_id={profile_id}
+            post={post}
+            comment_content={comment_content}
+            profile_image={profile_image}
+            setComments={setComments}
+            setShowEditForm={setShowEditForm}
+              />
+          ) : (
+            <p>{comment_content}</p>
+          )}
         </Media.Body>
-        {is_own_comment && (
-          <DropdownOption handleEdit={() => {}} handleDelete={handleDelete} />
+        {own_comment && !showEditForm && (
+          <DropdownOption
+            handleEdit={() => setShowEditForm(true)}
+            handleDelete={handleDelete}
+          />
         )}
       </Media>
-    </div>
+    </>
   );
 };
 
