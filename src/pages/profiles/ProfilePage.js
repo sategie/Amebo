@@ -17,13 +17,11 @@ import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataCon
 import { ProfileEditDropdown } from "../../components/DropdownOption";
 
 
-// import PopularProfiles from "./PopularProfiles";
-
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const activeUser = useActiveUser();
   const {id} = useParams();
-  const setProfileData = useSetProfileData();
+  const { setProfileData, handleFollow } = useSetProfileData();
   const { pageProfile } = useProfileData();
   const [profile] = pageProfile.results;
   const own_profile = activeUser?.username === profile?.user;
@@ -87,7 +85,7 @@ function ProfilePage() {
             ) : (
               <Button
                 className={`${btnStyles.Button} ${btnStyles.Black}`}
-                onClick={() => {}}
+                onClick={() => handleFollow(profile)}
               >
                 follow
               </Button>
@@ -98,23 +96,13 @@ function ProfilePage() {
     </>
   );
 
-//   const mainProfilePosts = (
-//     <>
-//       <hr />
-//       <p className="text-center">Profile owner's posts</p>
-//       <hr />
-//     </>
-//   );
-
   return (
     <Row>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        {/* <UserProfiles mobile /> */}
         <Container className={appStyles.Content}>
           {hasLoaded ? (
             <>
               {mainProfile}
-              {/* {mainProfilePosts} */}
             </>
           ) : (
             <Spinner animation="border" variant="success" role="status">
@@ -124,10 +112,10 @@ function ProfilePage() {
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        {/* <UserProfiles /> */}
       </Col>
     </Row>
   );
 }
 
 export default ProfilePage;
+

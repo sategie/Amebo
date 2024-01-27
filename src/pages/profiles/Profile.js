@@ -5,6 +5,7 @@ import { useActiveUser } from "../../contexts/ActiveUserContext";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { Button } from "react-bootstrap";
+import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
 const Profile = (props) => {
   const { profile, imageSize = 55 } = props;
@@ -12,6 +13,9 @@ const Profile = (props) => {
 
   const activeUser = useActiveUser();
   const own_profile = activeUser?.username === user;
+
+  const { handleFollow } = useSetProfileData();
+
 
   return (
     <div
@@ -39,7 +43,7 @@ const Profile = (props) => {
           ) : (
             <Button
               className={`${btnStyles.Button} ${btnStyles.Black}`}
-              onClick={() => {}}
+              onClick={() => handleFollow(profile)}
             >
               follow
             </Button>
