@@ -8,12 +8,11 @@ import appStyles from "../../App.module.css";
 import { Form, Button, Image, Col, Row, Container, Alert, } from "react-bootstrap";
 import axios from "axios";
 import { useSetActiveUser } from "../../contexts/ActiveUserContext";
+import { useRedirect } from "../../hooks/useRedirect";
 
 const SignInForm = () => {
     const setActiveUser = useSetActiveUser();
-
-
-
+    useRedirect("loggedIn");
 
 
     const [signInInfo, setSignInInfo] = useState({
@@ -40,13 +39,12 @@ const SignInForm = () => {
         try {
             const {data} = await axios.post("/dj-rest-auth/login/", signInInfo);
             setActiveUser(data.user);
-            history.push("/");
+            history.goBack();
         } catch(err) {
             // Use optional chaining to handle error display
             setErrors(err.response?.data);
         }
     };
-
 
 
   return (

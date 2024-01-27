@@ -14,7 +14,6 @@ const NavBar = () => {
     const setActiveUser = useSetActiveUser();
     const {expanded, setExpanded, ref} = useOutsideClickToggle();
  
-    
 
     const handleLogOut = async() => {
         try{
