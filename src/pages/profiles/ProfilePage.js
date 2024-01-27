@@ -21,7 +21,7 @@ function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const activeUser = useActiveUser();
   const {id} = useParams();
-  const { setProfileData, handleFollow } = useSetProfileData();
+  const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData();
   const { pageProfile } = useProfileData();
   const [profile] = pageProfile.results;
   const own_profile = activeUser?.username === profile?.user;
@@ -78,7 +78,7 @@ function ProfilePage() {
             (profile?.following_id ? (
               <Button
                 className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-                onClick={() => {}}
+                onClick={() => handleUnfollow(profile)}
               >
                 unfollow
               </Button>
