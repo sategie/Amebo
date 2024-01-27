@@ -26,7 +26,7 @@
     font-size: 2rem;
   }
   
-  /* These are overrides, ensure they're called after Bootstrap styles */
+  /* These override the bootstrap styles and thus come last */
   .Form-label {
     font-weight: 500;
     margin-bottom: 5px;

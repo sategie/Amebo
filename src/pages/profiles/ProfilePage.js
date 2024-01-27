@@ -14,6 +14,7 @@ import { useActiveUser } from "../../contexts/ActiveUserContext";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
+import { ProfileEditDropdown } from "../../components/DropdownOption";
 
 
 // import PopularProfiles from "./PopularProfiles";
@@ -47,6 +48,7 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
+    {profile?.own_profile && <ProfileEditDropdown id={profile?.id} />}
       <Row noGutters className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
           <Image

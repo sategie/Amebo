@@ -10,6 +10,9 @@ import PostPage from "./pages/posts/PostPage";
 import PostsList from "./pages/posts/PostsList";
 import EditPostForm from "./pages/posts/EditPostForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
+import UsernameForm from "./pages/profiles/UsernameForm";
+import PasswordForm from "./pages/profiles/PasswordForm";
+import EditProfileForm from "./pages/profiles/EditProfileForm";
 
 
 function App() {
@@ -29,6 +32,10 @@ function App() {
             <Route exact path="/posts/:id" render={() => <PostPage />} />
             <Route exact path="/posts/:id/edit" render={() => <EditPostForm />} />
             <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+            <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />} />
+            <Route exact path="/profiles/:id/edit/password" render={() => <PasswordForm />} />
+            <Route exact path="/profiles/:id/edit" render={() => <EditProfileForm />} />
+            
             <Route render={() => <p>Invalid Page!</p>} />
             </Switch>
         </Container>

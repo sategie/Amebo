@@ -1,5 +1,6 @@
 import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import styles from "../styles/DropdownOption.module.css";
 
 
@@ -41,3 +42,34 @@ export const DropdownOption = ({ handleEdit, handleDelete }) => {
     </Dropdown>
   );
 };
+
+export function ProfileEditDropdown({ id }) {
+    const history = useHistory();
+    return (
+      <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
+        <Dropdown.Toggle as={DotsIcon} />
+        <Dropdown.Menu className={styles.DropdownFont}>
+          <Dropdown.Item
+            onClick={() => history.push(`/profiles/${id}/edit`)}
+            aria-label="edit-profile"
+          >
+            <i className="fas fa-edit" /> Change Picture
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => history.push(`/profiles/${id}/edit/username`)}
+            aria-label="edit-username"
+          >
+            <i className="far fa-id-card" />
+            Change Username
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => history.push(`/profiles/${id}/edit/password`)}
+            aria-label="edit-password"
+          >
+            <i className="fas fa-key" />
+            Change Password
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+    );
+  }
