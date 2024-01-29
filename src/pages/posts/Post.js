@@ -4,8 +4,8 @@ import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosRes } from '../../api/axiosDefaults';
 import Avatar from '../../components/Avatar';
 import { useActiveUser } from '../../contexts/ActiveUserContext';
-import appStyles from "../../App.module.css";
-import styles from "../../styles/Post.module.css";
+import appStyles from '../../App.module.css';
+import styles from '../../styles/Post.module.css';
 import { DropdownOption } from '../../components/DropdownOption';
 
 const Post = (props) => {

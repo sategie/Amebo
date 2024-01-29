@@ -13,6 +13,7 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import PasswordForm from "./pages/profiles/PasswordForm";
 import EditProfileForm from "./pages/profiles/EditProfileForm";
+import HomePage from "./pages/home/HomePage";
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
         <NavBar />
         <Container className={styles.Page}>
             <Switch>
-            <Route exact path="/" render={() => <h1>Home</h1>} />
+            <Route exact path="/" render={() => <HomePage />} />
             <Route exact path="/posts" render={() => <PostsList />} />
             <Route exact path="/login" render={() => <SignInForm />} />
             <Route exact path="/signup" render={() => <SignUpForm />} />
