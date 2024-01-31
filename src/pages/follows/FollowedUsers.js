@@ -4,17 +4,27 @@ import { useActiveUser } from '../../contexts/ActiveUserContext';
 import Profile from '../profiles/Profile';
 
 const FollowedUsers = () => {
-    const [usersFollowed, setUsersFollowed] = useState();
+    const [usersFollowed, setUsersFollowed] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
 
     const activeUser = useActiveUser();
 
+    const filterProfiles = (profiles) => {
+        let userProfiles = []
+        for (let profile of profiles.results) {
+            if (profile.following_id != null) {
+                userProfiles.push(profile)
+            }
+        }
+        setUsersFollowed({ results: userProfiles})
+    }
+
     useEffect( () => {
         const fetchUsersFollowed = async() => {
             try {
-                const {data} = await axiosReq.get(`/followers/`);
+                const {data} = await axiosReq.get(`/profiles/`);
+                filterProfiles(data)
                 console.log(data)
-                setUsersFollowed(data);
                 setHasLoaded(true);
 
             } catch (err) {
@@ -32,14 +42,16 @@ const FollowedUsers = () => {
     }
 }, [activeUser] )
 
+console.log(usersFollowed)
+
 
 
 return (
     <div>
         {hasLoaded ? (
-            usersFollowed?.length ? (
-                usersFollowed.map(user => (
-                    <Profile key={user.following_id} profile={user} />
+            usersFollowed?.results?.length ? (
+                 usersFollowed.results.map(profile => (
+                    <Profile key={profile.id} profile={profile} />
                 ))
             ) : (
                 <p>No users followed.</p>
