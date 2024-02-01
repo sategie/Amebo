@@ -12,6 +12,7 @@ export const useSetProfileData = () => useContext(SetProfileDataContext);
 export const ProfileDataProvider = ({ children }) => {
   const [profileData, setProfileData] = useState({
     pageProfile: { results: [] },
+    followedUsers: { results: [] },
   });
 
   const activeUser = useActiveUser
@@ -52,6 +53,12 @@ export const ProfileDataProvider = ({ children }) => {
         pageProfile: {
           results: prevState.pageProfile.results.map((profile) =>
             unfollowHelper(profile, selectedProfile)
+          ),
+        },
+        followedUsers: { 
+          // Update the followedUsers results to exclude the unfollowed profile
+          results: prevState.followedUsers.results.filter(
+            (profile) => profile.id !== selectedProfile.id
           ),
         },
       }));

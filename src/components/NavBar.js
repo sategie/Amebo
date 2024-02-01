@@ -27,16 +27,16 @@ const NavBar = () => {
     const loggedInIcons = (
         <>
         <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/create-post">
-        <i class="fa-solid fa-square-plus"></i>Create Post
+        <i className="fa-solid fa-square-plus"></i>Create Post
         </NavLink>
         <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/followed-users">
-        <i class="fa-solid fa-people-group"></i>Followed Users
+        <i className="fa-solid fa-people-group"></i>Followed Users
         </NavLink>
         <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/notifications">
-        <i class="fa-solid fa-bell"></i>Notifications
+        <i className="fa-solid fa-bell"></i>Notifications
         </NavLink>
         <NavLink className={styles.NavLink} to="/" onClick={handleLogOut}>
-        <i class="fa-solid fa-user-plus"></i>Logout
+        <i className="fa-solid fa-user-plus"></i>Logout
         </NavLink>
         <NavLink className={styles.NavLink} to={`/profiles/${activeUser?.profile_id}`}>
         <Avatar src={activeUser?.profile_image} text="Profile" height={40} />
@@ -49,10 +49,10 @@ const NavBar = () => {
     const loggedOutIcons = (
         <>
             <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/login">
-            <i class="fa-solid fa-right-to-bracket"></i>Login
+            <i className="fa-solid fa-right-to-bracket"></i>Login
             </NavLink>
             <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/signup">
-            <i class="fa-solid fa-user-plus"></i>Signup
+            <i className="fa-solid fa-user-plus"></i>Signup
             </NavLink>
         </>
       );
@@ -70,7 +70,7 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
             <NavLink exact className={styles.NavLink} activeClassName={styles.Active} to="/">
-            <i class="fa-solid fa-house"></i>Home
+            <i className="fa-solid fa-house"></i>Home
             </NavLink>
             <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/posts">
             <i className="fa-solid fa-square-rss"></i>Posts

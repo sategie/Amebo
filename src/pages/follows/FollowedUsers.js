@@ -1,67 +1,57 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { axiosReq } from '../../api/axiosDefaults';
-import { useActiveUser } from '../../contexts/ActiveUserContext';
 import Profile from '../profiles/Profile';
+import { useProfileData, useSetProfileData } from '../../contexts/ProfileDataContext';
+import { useActiveUser } from '../../contexts/ActiveUserContext';
 
 const FollowedUsers = () => {
-    const [usersFollowed, setUsersFollowed] = useState({ results: [] });
+    const { followedUsers } = useProfileData();
+    const { setProfileData } = useSetProfileData();
     const [hasLoaded, setHasLoaded] = useState(false);
 
     const activeUser = useActiveUser();
 
-    const filterProfiles = (profiles) => {
-        let userProfiles = []
-        for (let profile of profiles.results) {
-            if (profile.following_id != null) {
-                userProfiles.push(profile)
-            }
-        }
-        setUsersFollowed({ results: userProfiles})
-    }
 
-    useEffect( () => {
-        const fetchUsersFollowed = async() => {
+    useEffect(() => {
+        // Define the function inside useEffect so it's created with the fresh state/props on every render
+        const filterProfiles = (profiles) => {
+            let userProfiles = profiles.results.filter(profile => profile.following_id != null);
+            setProfileData(prevState => ({
+                ...prevState,
+                followedUsers: { results: userProfiles },
+            }));
+        };
+    
+        async function fetchFollowedUsers() {
             try {
                 const {data} = await axiosReq.get(`/profiles/`);
-                filterProfiles(data)
-                console.log(data)
+                filterProfiles(data);
                 setHasLoaded(true);
-
             } catch (err) {
                 console.log(err);
             }
-        };
-        setHasLoaded(false);
-        const timer = setTimeout(() => {
-            fetchUsersFollowed();
-          }, 1000);
-
-          return () => {
-            clearTimeout(timer);
+        }
     
-    }
-}, [activeUser] )
+        setHasLoaded(false);
+        fetchFollowedUsers();
+    }, [activeUser, setProfileData]);
+    
 
-console.log(usersFollowed)
-
-
-
-return (
-    <div>
-        {hasLoaded ? (
-            usersFollowed?.results?.length ? (
-                 usersFollowed.results.map(profile => (
-                    <Profile key={profile.id} profile={profile} />
-                ))
+    return (
+        <div>
+            {hasLoaded ? (
+                followedUsers?.results?.length ? (
+                     followedUsers.results.map(profile => (
+                        <Profile key={profile.id} profile={profile} />
+                    ))
+                ) : (
+                    <p>No users followed.</p>
+                )
             ) : (
-                <p>No users followed.</p>
-            )
-        ) : (
-            <p>Loading...</p>
-        )}
-    </div>
-)
+                <p>Loading...</p>
+            )}
+        </div>
+    );
 }
 
-
-export default FollowedUsers
+export default FollowedUsers;
