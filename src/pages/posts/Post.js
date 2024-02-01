@@ -23,7 +23,6 @@ const Post = (props) => {
         user,
         postPage,
         setPosts
-    
     } = props;
 
     const activeUser = useActiveUser();
@@ -94,17 +93,15 @@ const Post = (props) => {
             </Media>
         </Card.Body>
 
-        {/* Title moved to be above image and post_content */}
-        {title && <Card.Title className={styles.LargeTitle}>{title}</Card.Title>}
-        <Card.Body>
+        {/* Wrapped the title, content, and image with Link */}
+        <Link to={`/posts/${id}`}>
+            {title && <Card.Title className={styles.LargeTitle}>{title}</Card.Title>}
             {post_content && <Card.Text>{post_content}</Card.Text>}
-            <hr className={styles.ContentBorder} />
-            <Link to={`/posts/${id}`}>
-                <Card.Img src={image} alt={title} className={appStyles.Image} />
-            </Link>
-        </Card.Body>
+            <Card.Img src={image} alt={title} className={appStyles.Image} />
+        </Link>
+        
         <hr className={styles.ContentBorder} />
-
+        
         <Card.Body>
             <div className={styles.PostBar}>
                 {is_own_post ? (
@@ -133,8 +130,8 @@ const Post = (props) => {
                 {likes_count}
                 <Link to={`/posts/${id}`}>
                     <i className="far fa-comments" />
+                    {comments_count}
                 </Link>
-                {comments_count}
             </div>
         </Card.Body>
     </Card>
