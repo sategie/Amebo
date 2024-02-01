@@ -1,8 +1,8 @@
 .Button {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     align-self: center;
     border-radius: 10rem;
-    border-color: transparent;
+    border-color: #212529;
     padding: 0.4rem 1rem;
     margin-left: 0.2rem;
     margin-right: 0.2rem;
@@ -13,7 +13,7 @@
   
   .Button:hover {
     opacity: 0.8;
-    border-color: transparent;
+    border-color: #212529;
     cursor: pointer;
     background-color: #66bb6a;
   }

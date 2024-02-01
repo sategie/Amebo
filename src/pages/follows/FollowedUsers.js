@@ -3,6 +3,7 @@ import { axiosReq } from '../../api/axiosDefaults';
 import Profile from '../profiles/Profile';
 import { useProfileData, useSetProfileData } from '../../contexts/ProfileDataContext';
 import { useActiveUser } from '../../contexts/ActiveUserContext';
+import appStyles from '../../App.module.css'; // Import styles
 
 const FollowedUsers = () => {
     const { followedUsers } = useProfileData();
@@ -11,9 +12,7 @@ const FollowedUsers = () => {
 
     const activeUser = useActiveUser();
 
-
     useEffect(() => {
-        // Define the function inside useEffect so it's created with the fresh state/props on every render
         const filterProfiles = (profiles) => {
             let userProfiles = profiles.results.filter(profile => profile.following_id != null);
             setProfileData(prevState => ({
@@ -35,23 +34,28 @@ const FollowedUsers = () => {
         setHasLoaded(false);
         fetchFollowedUsers();
     }, [activeUser, setProfileData]);
-    
 
     return (
-        <div>
-            {hasLoaded ? (
-                followedUsers?.results?.length ? (
-                     followedUsers.results.map(profile => (
-                        <Profile key={profile.id} profile={profile} />
-                    ))
-                ) : (
-                    <p>No users followed.</p>
-                )
-            ) : (
-                <p>Loading...</p>
-            )}
-        </div>
-    );
+      <div className={`my-3 d-flex align-items-center ${"flex-column"}`}>
+          {hasLoaded ? (
+              followedUsers?.results?.length ? (
+                   followedUsers.results.map(profile => (
+                      <Profile key={profile.id} profile={profile} />
+                  ))
+              ) : (
+                  // Enclose the text in a styled div
+                  <div className={`${appStyles.Content}`}>
+                      <p>No users followed.</p>
+                  </div>
+              )
+          ) : (
+              // Enclose the text in a styled div
+              <div className={`${appStyles.Content}`}>
+                  <p>Loading...</p>
+              </div>
+          )}
+      </div>
+  );
 }
 
 export default FollowedUsers;
