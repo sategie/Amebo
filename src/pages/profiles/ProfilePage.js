@@ -11,7 +11,7 @@ import appStyles from "../../App.module.css";
 
 import btnStyles from "../../styles/Button.module.css";
 import { useActiveUser } from "../../contexts/ActiveUserContext";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
 import { ProfileEditDropdown } from "../../components/DropdownOption";
@@ -67,8 +67,10 @@ function ProfilePage() {
               <div>followers</div>
             </Col>
             <Col xs={3} className="my-2">
+            <Link to={`/followed-users`}> 
               <div>{profile?.following_count}</div>
               <div>following</div>
+              </Link>
             </Col>
           </Row>
         </Col>
