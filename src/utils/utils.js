@@ -6,14 +6,15 @@ export const fetchMoreData = async (resource, setResource) => {
     setResource((prevResource) => ({
       ...prevResource,
       next: data.next,
-      results: data.results.reduce((acc, cur) => {
-        return acc.some((accResult) => accResult.id === cur.id)
+      results: data.results.reduce((acc, curr) => {
+        return acc.some((accResult) => accResult.id === curr.id)
           ? acc
-          : [...acc, cur];
+          : [...acc, curr];
       }, prevResource.results),
     }));
   } catch (err) {}
 };
+console.log(fetchMoreData, "Infinite scrolling feature")
 
 export const followHelper = (profile, selectedProfile, following_id) => {
   return profile.id === selectedProfile.id
