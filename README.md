@@ -171,7 +171,6 @@ Finally, a logged in user has the option to click on the **Logout** button in or
 Logging out of the app returns the user to the landing page.
 
 
-
 ## Features Left to Implement/Improve
 
 ### Notifications
@@ -189,4 +188,27 @@ I plan to add a search bar in the app navigation menu which would be used to sea
 Infinite Scrolling is already set up in the app. However, this is only used in the posts section when viewing posts.
 
 I plan to extend this feature to Comments page, Followed Users page as well as the Notifications page (when this has been implemented).
+
+
+### Frameworks, Libraries and Dependencies
+
+### React
+
+[React](https://react.dev/) is the library used in creating this project
+
+### React-Router-DOM
+
+[react-router-dom](https://www.npmjs.com/package/react-router-dom) is used to set up the client side routing for the React project. It also contains some built in hooks which were used at various points in the project.
+
+### ReactDOM
+
+[react-dom](https://reactjs.org/docs/react-dom.html) is used to to handle rendering of components and elements on the web.
+
+### Axios
+
+[Axios](https://www.npmjs.com/package/axios) is used to handle HTTP requests to the Amebo DRF API. It is also used to handle refresh token requests which enables a user to be logged in for up to 24 hours without having to sign in again every 5 minutes.
+
+### React Bootstrap
+
+[React Bootstrap](https://react-bootstrap.github.io/) is used in the project to provide bootstrap styling without needing to write too many custom CSS styles.
 
