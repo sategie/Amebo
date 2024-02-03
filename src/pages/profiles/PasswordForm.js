@@ -36,7 +36,7 @@ const PasswordForm = () => {
 
   useEffect(() => {
     if (activeUser?.profile_id?.toString() !== id) {
-      // redirect user if they are not the owner of this profile
+      // redirect user to home page if not own profile
       history.push("/");
     }
   }, [activeUser, history, id]);

@@ -43,7 +43,7 @@ function PostsList() {
 
     return (
         <Row className="h-100">
-          <Col className="py-2 p-0 p-lg-2" lg={8}>
+          <Col className="py-2 p-0 p-lg-2" lg={12}>
             <Form className="mb-3">
               <Form.Group className={styles.SearchBar}>
                 <Form.Control
