@@ -14,23 +14,35 @@ const FollowedUsers = () => {
 
     useEffect(() => {
         const filterProfiles = (profiles) => {
-            let userProfiles = profiles.results.filter(profile => profile.following_id != null);
+            let userProfiles = [];
+            for (let profile of profiles.results) {
+                if (profile.following_id != null) {
+                    userProfiles.push(profile);
+                }
+            }
+
+            console.log("filtered profiles: ", userProfiles);
+            console.log("previous state:", followedUsers);
+
             setProfileData(prevState => ({
                 ...prevState,
                 followedUsers: { results: userProfiles },
             }));
         };
-    
+
         async function fetchFollowedUsers() {
             try {
                 const {data} = await axiosReq.get(`/profiles/`);
+
+                console.log("Profiles:", data.results);
+
                 filterProfiles(data);
                 setHasLoaded(true);
             } catch (err) {
                 console.log(err);
             }
         }
-    
+
         setHasLoaded(false);
         fetchFollowedUsers();
     }, [activeUser, setProfileData]);
@@ -43,13 +55,11 @@ const FollowedUsers = () => {
                       <Profile key={profile.id} profile={profile} />
                   ))
               ) : (
-                  // Enclose the text in a styled div
                   <div className={`${appStyles.Content}`}>
                       <p>No users followed.</p>
                   </div>
               )
           ) : (
-              // Enclose the text in a styled div
               <div className={`${appStyles.Content}`}>
                   <p>Loading...</p>
               </div>
