@@ -105,7 +105,7 @@ If the user clicks on the cancel button, the user is taken back to the previous 
 
 (screenshot of Create Post form)
 
-## Edit/Delete Post
+### Edit/Delete Post
 A user has the option to edit or delete a post which they created.
 
 To edit/delete a post, the user needs to log in and select the particular post. Afterwards, they need to click the three dots on the right beside the post in order to have the option to edit or delete the post.
