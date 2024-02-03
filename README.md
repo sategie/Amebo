@@ -212,3 +212,43 @@ I plan to extend this feature to Comments page, Followed Users page as well as t
 
 [React Bootstrap](https://react-bootstrap.github.io/) is used in the project to provide bootstrap styling without needing to write too many custom CSS styles.
 
+
+## Technologies Used
+
+Aside from the libraries and dependencies used in the project, several other third party apps were used during the course of the project.
+
+### Screenpresso
+
+[Screenpresso](https://www.screenpresso.com/) is used to capture the screenshots of the project.
+
+### AmIResponsive
+
+[AmIResponsive](https://ui.dev/amiresponsive) is used to capture the responsiveness of the app on various screensizes.
+
+### Heroku
+
+[Heroku](https://www.heroku.com/) is used to host the deployed application.
+
+### Google Fonts
+
+[Google Fonts](https://fonts.google.com/) is used to obtain the Roboto font used throughout this project.
+
+### Font Awesome
+
+[Font Awesome](https://fontawesome.com/) is used to display icons in the application.
+
+### Pixabay
+
+[Pixabay](https://pixabay.com/) is used to get most of the pictures used in the application.
+
+### TinyPNG
+
+[TinyPNG](https://tinypng.com/) is used to reduce the sizes of images used in the app.
+
+### CodeAnywhere
+
+[CodeAnywhere](https://codeanywhere.com/) is the cloud IDE used in coding this project.
+
+### Github
+
+[Github](https://github.com/) is used for version control. It tracks and saves the changes made to the application at various points in time.

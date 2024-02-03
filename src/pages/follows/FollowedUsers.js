@@ -42,7 +42,7 @@ const FollowedUsers = () => {
                 console.log(err);
             }
         }
-
+        
         setHasLoaded(false);
         fetchFollowedUsers();
     }, [activeUser, setProfileData]);
