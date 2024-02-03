@@ -67,10 +67,18 @@ function ProfilePage() {
               <div>followers</div>
             </Col>
             <Col xs={3} className="my-2">
-            <Link to={`/followed-users`}> 
-              <div>{profile?.following_count}</div>
-              <div>following</div>
-              </Link>
+            {activeUser ? (
+  <Link to={`/followed-users`}>
+    <div>{profile?.following_count}</div>
+    <div>following</div>
+  </Link>
+) : (
+  <div className={styles.NoClick}>
+    <div>{profile?.following_count}</div>
+    <div>following</div>
+  </div>
+)}
+
             </Col>
           </Row>
         </Col>
@@ -100,7 +108,7 @@ function ProfilePage() {
 
   return (
     <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+      <Col className="py-2 p-0 p-lg-2" lg={12}>
         <Container className={appStyles.Content}>
           {hasLoaded ? (
             <>
