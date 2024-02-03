@@ -164,12 +164,29 @@ If the **unfollow** button is selected, the user is removed from the Followed Us
 
 (screenshot of Followed Users page)
 
-### Notifications
-
-There is a notifications page in the app. However, clicking on this shows a message to the user informing that the feature is under construction. When this feature is implemented in the project, the notifications for new followers, comments and likes will appear here.
-
 ### Logout
 
 Finally, a logged in user has the option to click on the **Logout** button in order to log out of the app.
 
 Logging out of the app returns the user to the landing page.
+
+
+
+## Features Left to Implement/Improve
+
+### Notifications
+
+There is a notifications page in the app. However, clicking on this shows a message to the user informing that the feature is under construction. When this feature is implemented in the project, the notifications for new followers, comments and likes will appear here.
+
+### App Search Bar
+
+The current search bar in the posts page only finds post related content .i.e users who have created a post, post title etc.
+
+I plan to add a search bar in the app navigation menu which would be used to search for all users (irrespective of whether they have created a post or not).
+
+### Infinite Scrolling
+
+Infinite Scrolling is already set up in the app. However, this is only used in the posts section when viewing posts.
+
+I plan to extend this feature to Comments page, Followed Users page as well as the Notifications page (when this has been implemented).
+
