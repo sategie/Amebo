@@ -29,7 +29,7 @@ const FollowedUsers = () => {
                 followedUsers: { results: userProfiles },
             }));
         };
-
+        
         async function fetchFollowedUsers() {
             try {
                 const {data} = await axiosReq.get(`/profiles/`);
@@ -42,7 +42,7 @@ const FollowedUsers = () => {
                 console.log(err);
             }
         }
-        
+
         setHasLoaded(false);
         fetchFollowedUsers();
     }, [activeUser, setProfileData]);

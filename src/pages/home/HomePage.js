@@ -2,19 +2,23 @@ import React from 'react';
 import { useActiveUser } from '../../contexts/ActiveUserContext';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import styles from '../../styles/HomePage.module.css';
-import GreenParrot from "../../assets/green-parrot.jpg";
 
 const HomePage = () => {
   const activeUser = useActiveUser();
 
   return (
     <Card style={{ width: 'max-width' }} >
-      <Card.Img variant="top" className = {styles.HeroImage} src= {GreenParrot} />
+      <Card.Img variant="top" className = {styles.HeroImage} src= {'https://res.cloudinary.com/dvfxz4as6/image/upload/v1706989636/parrot-2659023_1280_qououc.jpg'} />
       <Card.Body>
         {activeUser ? (
           <>
         <Card.Body>
-            <Card.Title className = {styles.HomeWelcome} >Welcome {activeUser.username}</Card.Title>
+            <Card.Title className = {styles.HomeWelcome} >Welcome to the Amebo App {activeUser.username}</Card.Title>
+            <Card.Text className = {styles.HomeDescription}>
+                <strong>
+          Amebo is a vibrant community where you can share your stories, engage with others, and feed your curiosity.
+          </strong>
+        </Card.Text>
             <Card.Text>
               You now have the following privileges:
             </Card.Text>
@@ -37,6 +41,11 @@ const HomePage = () => {
           <>
         <Card.Body>
             <Card.Title className = {styles.HomeWelcome} >Welcome to the Amebo App</Card.Title>
+            <Card.Text className = {styles.HomeDescription}>
+            <strong>
+          Amebo is a vibrant community where you can share your stories, engage with others, and feed your curiosity.
+          </strong>
+        </Card.Text>
             <Card.Text>
               Please use the Signup button above to register.
             </Card.Text>
