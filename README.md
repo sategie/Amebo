@@ -65,3 +65,111 @@ The major factor considered when choosing the color combinations was readability
 
 The Roboto font was used througout the project to provide a comfortable viewing experience for end users.
 The font sizes are also large enough to enable users view the contents of the app.
+
+
+## Features
+
+### Landing Page
+The landing page provides basic information about the app including the functions available for users.
+(screenshot of landing page)
+
+### Signup
+When a user clicks the **Signup** option, the user is taken to a signup page to enter the username and password information.
+
+If the user clicks the Signup button without entering the fields, a prompt appears informing that the fields should not be blank.
+After filling the fields and clicking on Signup, the user is returned to the landing page with a message welcoming the specific user and providing an overview of features the user has access to.
+(screenshot of signup page)
+
+### Login
+When a user clicks the **Login** button, the user is prompted to enter the username and password. If the user attempts to click the login button without entering the username and password fields, they are prompted that the felds should not be blank.
+After logging in, the user is returned to the landing page with a message welcoming the specific user and providing an overview of features the user has access to.
+(screenshot of login page)
+
+### Posts
+The posts page lists all the posts created by users. It includes a search bar to filter for posts and users. 
+
+When an unauthenticated user clicks on a particular post, the user can see all the comments associated with the post as well as the number of post likes.
+When an authenticated user clicks on a particular post, the user has the option to create a comment or like the post.
+
+(screenshot of Posts Page)
+
+### Create Post
+When a user logs into the app, the user is able to click on **Create Post** in order to create a new post
+
+The Create Post form has the option for a title and description as well as an image upload option.
+Attempting to create a post without the title and description fields filled out, displays a prompt informing the user that the fields have to be filled.
+
+The user has a **Create** and **Cancel** button in the Create Post form. 
+If the user clicks on the create option after filling in the title and description, a new new post is created.
+If the user clicks on the cancel button, the user is taken back to the previous page they were on.
+
+(screenshot of Create Post form)
+
+## Edit/Delete Post
+A user has the option to edit or delete a post which they created.
+
+To edit/delete a post, the user needs to log in and select the particular post. Afterwards, they need to click the three dots on the right beside the post in order to have the option to edit or delete the post.
+
+If a user chooses to edit the post, a form is opened with the current post content pre-filled. The user then has the option to update the title, description and/or uploaded image accordingly.
+The user needs to click on the **Update** button after making the necessary changes, in order to save the new changes.
+
+If a user decides not to continue with the editing, the user can click the **Cancel** button in order to go back to the original post.
+
+(screenshot of Edit/Delete Post form)
+
+### Create/Edit/Delete Comment
+A logged in user has the option to add a comment on a post, edit a comment posted or delete the comment.
+
+The user needs to click on the three dots beside the comment in order to have the option to edit or delete the comment.
+
+(screenshot of Create/Edit/Delete comment)
+
+### View Other Profiles
+
+A user can click on another user to view the profile of the user.
+
+The following information appear when a user is selected: profile avatar, username, number of posts, followers and users the profile is following.
+
+### View/Edit Own Profile
+
+A logged in user has the option to select the profile section in the navbar and view and edit their own profile.
+
+The user can edit their own profile by clicking the three dots on the right.
+
+After clicking the three dots, the user is presented with three options: **Change Picture**, **Change Username** and **Change Password**.
+
+Clicking on **Change Picture** enables the user update their profile picture.
+
+Clicking on **Change Username** enables the user update their username.
+
+Clicking on **Change Password** enables the user update their password.
+
+If the user decides not to continue with the editing, the user can click the **Cancel** button to return back to the profile view.
+
+(screenshot of View/Edit profile)
+
+### Follow/Unfollow Users
+
+A logged in user has the option to follow and unfollow other users from any page where the user profile is selectable.
+
+Following a user increases the following count of the logged in user by one. It also simultaneouly increases the followers count of the followed user by one.
+Unfollowing a user decreases the following count of the logged in user by one. It also simultaneously decreases the followers count of the followed user by one.
+
+### Followed Users
+
+A logged in user has the option to select **Followed Users** in order to view the profiles of users they are currently following.
+
+The user has the option to unfollow the user on this page.
+If the **unfollow** button is selected, the user is removed from the Followed Users page immediately.
+
+(screenshot of Followed Users page)
+
+### Notifications
+
+There is a notifications page in the app. However, clicking on this shows a message to the user informing that the feature is under construction. When this feature is implemented in the project, the notifications for new followers, comments and likes will appear here.
+
+### Logout
+
+Finally, a logged in user has the option to click on the **Logout** button in order to log out of the app.
+
+Logging out of the app returns the user to the landing page.
