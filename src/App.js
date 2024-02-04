@@ -15,6 +15,7 @@ import PasswordForm from "./pages/profiles/PasswordForm";
 import EditProfileForm from "./pages/profiles/EditProfileForm";
 import HomePage from "./pages/home/HomePage";
 import FollowedUsers from "./pages/follows/FollowedUsers";
+import NotificationsPage from "./pages/notifications/NotificationsPage";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route exact path="/posts/:id" render={() => <PostPage />} />
             <Route exact path="/posts/:id/edit" render={() => <EditPostForm />} />
             <Route exact path="/followed-users" render={() => <FollowedUsers />} />
+            <Route exact path="/notifications" render={() => <NotificationsPage />} />
             <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
             <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />} />
             <Route exact path="/profiles/:id/edit/password" render={() => <PasswordForm />} />

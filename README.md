@@ -285,3 +285,5 @@ Aside from the libraries and dependencies used in the project, several other thi
 | Form Validation | A logged in user does not enter the title or description while creating a post.   | A message appears informing the user that the fields should not be blank.                                                                                                                 | PASS       |
 | Form Validation | A logged in user enters a duplicate post title as one of their previous posts.    | A message appears informing the user that they already have an existing post with the same title.                                                                                         | PASS       |
 
+### Validator Testing
+
