@@ -1,6 +1,6 @@
 # Amebo
 
-![Image of Landing Page](readme_assets/responsive.png)
+![Image of Landing Page showing responsiveness](readme_assets/responsive.png)
 
 ## Project Goals
 
@@ -77,19 +77,24 @@ The font sizes are also large enough to enable users view the contents of the ap
 
 ### Landing Page
 The landing page provides basic information about the app including the functions available for users.
-(screenshot of landing page)
+
+![Image of Landing Page](readme_assets/landingpage.png)
+![Image of Landing Page](readme_assets/landingpage_contd.png)
 
 ### Signup
 When a user clicks the **Signup** option, the user is taken to a signup page to enter the username and password information.
 
 If the user clicks the Signup button without entering the fields, a prompt appears informing that the fields should not be blank.
 After filling the fields and clicking on Signup, the user is returned to the landing page with a message welcoming the specific user and providing an overview of features the user has access to.
-(screenshot of signup page)
+
+![Image of Signup page](readme_assets/signup.png)
+
 
 ### Login
 When a user clicks the **Login** button, the user is prompted to enter the username and password. If the user attempts to click the login button without entering the username and password fields, they are prompted that the felds should not be blank.
 After logging in, the user is returned to the landing page with a message welcoming the specific user and providing an overview of features the user has access to.
-(screenshot of login page)
+
+![Image of Login page](readme_assets/login.png)
 
 ### Posts
 The posts page lists all the posts created by users. It includes a search bar to filter for posts and users. 
@@ -97,7 +102,9 @@ The posts page lists all the posts created by users. It includes a search bar to
 When an unauthenticated user clicks on a particular post, the user can see all the comments associated with the post as well as the number of post likes.
 When an authenticated user clicks on a particular post, the user has the option to create a comment or like the post.
 
-(screenshot of Posts Page)
+![Image of Posts page](readme_assets/postspage.png)
+
+![Image of Single Post page](readme_assets/postpage.png)
 
 ### Create Post
 When a user logs into the app, the user is able to click on **Create Post** in order to create a new post
@@ -109,7 +116,7 @@ The user has a **Create** and **Cancel** button in the Create Post form.
 If the user clicks on the create option after filling in the title and description, a new new post is created.
 If the user clicks on the cancel button, the user is taken back to the previous page they were on.
 
-(screenshot of Create Post form)
+![Image of Post Creation page](readme_assets/createpost.png)
 
 ### Edit/Delete Post
 A user has the option to edit or delete a post which they created.
@@ -121,14 +128,14 @@ The user needs to click on the **Update** button after making the necessary chan
 
 If a user decides not to continue with the editing, the user can click the **Cancel** button in order to go back to the original post.
 
-(screenshot of Edit/Delete Post form)
+![Image of Edit Post page](readme_assets/editpost.png)
 
 ### Create/Edit/Delete Comment
 A logged in user has the option to add a comment on a post, edit a comment posted or delete the comment.
 
 The user needs to click on the three dots beside the comment in order to have the option to edit or delete the comment.
 
-(screenshot of Create/Edit/Delete comment)
+![Image of Comment page](readme_assets/comment.png)
 
 ### View Other Profiles
 
@@ -152,7 +159,7 @@ Clicking on **Change Password** enables the user update their password.
 
 If the user decides not to continue with the editing, the user can click the **Cancel** button to return back to the profile view.
 
-(screenshot of View/Edit profile)
+![Image of profile page](readme_assets/view_edit_profile.png)
 
 ### Follow/Unfollow Users
 
@@ -168,7 +175,7 @@ A logged in user has the option to select **Followed Users** in order to view th
 The user has the option to unfollow the user on this page.
 If the **unfollow** button is selected, the user is removed from the Followed Users page immediately.
 
-(screenshot of Followed Users page)
+![Image of Followed Users page](readme_assets/followed_users.png)
 
 ### Logout
 
