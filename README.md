@@ -6,6 +6,12 @@
 
 The Amebo app was designed as a social media platform to share interesting content with other people. It promotes social interaction by giving users the ability to comment on posts, like posts and follow users whose posts they find interesting.
 
+This project utilizes two separate repositories. One for the frontend and another for the backend.
+
+The frontend is designed using the [React](https://react.dev/) Library.
+
+The backend utilizes [Django Rest Framework](https://www.django-rest-framework.org/) and the repository for this can be found [here](https://github.com/sategie/amebo_drf) 
+
 ## Agile Methodology
 
 An agile approach was adopted in designing this project.
@@ -286,4 +292,81 @@ Aside from the libraries and dependencies used in the project, several other thi
 | Form Validation | A logged in user enters a duplicate post title as one of their previous posts.    | A message appears informing the user that they already have an existing post with the same title.                                                                                         | PASS       |
 
 ### Validator Testing
+
+#### W3C CSS validator
+
+No errors were found using the [W3C CSS validator](https://jigsaw.w3.org/css-validator/)
+
+### Known Bugs
+
+All bugs found in the project were resolved. Hence, there are currently no known unresolved bugs.
+
+
+## Deployment
+
+The following steps were taken to deploy the app in Heroku:
+
+- Log in to Heroku.
+- Select 'New' on the top right and click on 'Create new app'.
+- Enter a name for the app and select the appropriate region.
+- Select 'Create app'.
+- Select the 'Deploy' tab at the top.
+- Select 'GitHub' from the deployment method options to confirm you wish to deploy using GitHub.
+- Locate the 'Connect to GitHub' section and use the search box to locate your repo.
+- Select 'Connect' afterwards
+- OPTIONAL: Choose the main branch under 'Automatic Deploys' and select 'Enable Automatic Deploys' if you wish for your deployed site to be automatically redeployed every time you push changes to GitHub.
+- Find the 'Manual Deploy' section, choose 'main' as the branch to deploy and select 'Deploy Branch'.
+
+When deployment is complete, a link to your deployed site will appear.
+
+### How to Fork the Repository
+
+- You can make a copy of the project by doing the following:
+
+    1. Go to the project's Github repository: [Amebo](https://github.com/sategie/amebo)
+
+    2. Click on the *Fork* button on the top right of the screen.
+
+- Note: Changes made here do not affect the original repository
+
+### How to Clone the Repository
+
+- The repository can be cloned by doing the following:
+
+    1. Go to the project's Github repository: [Amebo](https://github.com/sategie/amebo)
+
+    2. Click the green *Code* button on the right.
+
+    3. Click on *HTTPS* and copy the link.
+
+    4. Open Git and change the working directory to where you want to have the cloned directory.
+
+    5. Type *git clone* and paste the copied URL.
+
+- You can make changes to the project by doing the following:
+
+    1. Type *git add .*
+
+    2. Type *git commit -m* and add a short comment within quotes .e.g git commit -m "This is a short comment example"
+
+    3. Type *git push* to push the changes to the repository
+
+- Note: Any update committed to the main branch immediately reflects in the hosted site.
+
+
+## Credits
+
+### Code
+
+- Code for the ProfileDataContext and ActiveUserContext were adapted from Code Institute's 'Moments' React walkthrough lessons
+
+- The overall inspiration for the project was also drawn from the 'Moments' walkthrough.
+
+### Acknowledgements
+
+- This was a huge project and I could never have completed it without the support of my family.
+
+- Big mentions also go to the tutors at Code Institute for taking their time to assist in debugging some issues I encountered during the course of the project.
+
+- Finally, I want to thank my mentor Jubril Akolade for his useful insights and tips which helped me along the way.
 
