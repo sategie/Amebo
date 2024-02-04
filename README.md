@@ -24,7 +24,17 @@ The User Stories were completed in order of importance, with the features needed
 
 The Kanban Board showing the overall planning for the User Stories can be found in the screenshots below:
 
-(Screenshots of Iterations here)
+![Image of Iteration 1](readme_assets/iteration1.png)
+
+![Image of Iteration 2](readme_assets/iteration2.png)
+
+![Image of Iteration 3](readme_assets/iteration3.png)
+
+![Image of Iteration 4](readme_assets/iteration4.png)
+
+![Image of continued Iteration 4](readme_assets/iteration4_contd.png)
+
+![Image of Iterations 5 and 6](readme_assets/iterations5_6.png)
 
 ## Project Planning
 
