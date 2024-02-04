@@ -71,7 +71,23 @@ After the user logs in, the home page displays what features the user is able to
 ### Skeleton
 The skeleton plane shows the wireframes for the project. The wireframes are displayed below:
 
-(Pictures of wireframes here)
+![Image of Home Wireframes](readme_assets/home_wf.png)
+
+![Image of Signup Wireframes](readme_assets/signup_wf.png)
+
+![Image of Login Wireframes](readme_assets/login_wf.png)
+
+![Image of Posts Wireframes](readme_assets/posts_wf.png)
+
+![Image of Posts_logged_in Wireframes](readme_assets/posts_logged_in_wf.png)
+
+![Image of Post Creation Wireframes](readme_assets/createpost_wf.png)
+
+![Image of Comments Wireframes](readme_assets/comments_wf.png)
+
+![Image of Followed Users Wireframes](readme_assets/followedusers_wf.png)
+
+![Image of Profile Wireframes](readme_assets/profile_wf.png)
 
 ### Surface
 The surface plane shows the completed app. The wireframes designed for the project were used to create the final app.
