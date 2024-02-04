@@ -1,6 +1,6 @@
 # Amebo
 
-(Screenshot of App using AmIResponsive)
+![Image of Landing Page](readme_assets/responsive.png)
 
 ## Project Goals
 
