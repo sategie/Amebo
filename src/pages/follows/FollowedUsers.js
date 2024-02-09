@@ -3,7 +3,7 @@ import { axiosReq } from '../../api/axiosDefaults';
 import Profile from '../profiles/Profile';
 import { useProfileData, useSetProfileData } from '../../contexts/ProfileDataContext';
 import { useActiveUser } from '../../contexts/ActiveUserContext';
-import appStyles from '../../App.module.css'; // Import styles
+import appStyles from '../../App.module.css';
 
 const FollowedUsers = () => {
     const { followedUsers } = useProfileData();
@@ -21,9 +21,6 @@ const FollowedUsers = () => {
                 }
             }
 
-            console.log("filtered profiles: ", userProfiles);
-            console.log("previous state:", followedUsers);
-
             setProfileData(prevState => ({
                 ...prevState,
                 followedUsers: { results: userProfiles },
@@ -33,8 +30,6 @@ const FollowedUsers = () => {
         async function fetchFollowedUsers() {
             try {
                 const {data} = await axiosReq.get(`/profiles/`);
-
-                console.log("Profiles:", data.results);
 
                 filterProfiles(data);
                 setHasLoaded(true);

@@ -29,12 +29,7 @@ export const ProfileDataProvider = ({ children }) => {
                 followHelper(profile, selectedProfile, data.id)
               ),
             },
-            // popularProfiles: {
-            //   ...prevState.popularProfiles,
-            //   results: prevState.popularProfiles.results.map((profile) =>
-            //     followHelper(profile, clickedProfile, data.id)
-            //   ),
-            // },
+        
           }));
     
 
@@ -44,7 +39,6 @@ export const ProfileDataProvider = ({ children }) => {
   }
 
   const handleUnfollow = async (selectedProfile) => {
-    console.log(selectedProfile)
     try {
       await axiosRes.delete(`/followers/${selectedProfile.following_id}/`);
 

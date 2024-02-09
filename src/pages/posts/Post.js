@@ -93,7 +93,6 @@ const Post = (props) => {
             </Media>
         </Card.Body>
 
-        {/* Wrapped the title, content, and image with Link */}
         <Link to={`/posts/${id}`}>
             {title && <Card.Title className={styles.LargeTitle}>{title}</Card.Title>}
             {post_content && <Card.Text>{post_content}</Card.Text>}

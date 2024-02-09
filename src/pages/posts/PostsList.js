@@ -36,10 +36,6 @@ function PostsList() {
         clearTimeout(delaySearch);
       };
     }, [search]);
-    
-    console.log(`posts.next : ${posts.next}`);
-    console.log(`!!posts.next : ${!!posts.next}`);
-    console.log(posts);
 
     return (
         <Row className="h-100">

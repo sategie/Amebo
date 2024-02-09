@@ -14,7 +14,6 @@ export const fetchMoreData = async (resource, setResource) => {
     }));
   } catch (err) {}
 };
-console.log(fetchMoreData, "Infinite scrolling feature")
 
 export const followHelper = (profile, selectedProfile, following_id) => {
   return profile.id === selectedProfile.id
