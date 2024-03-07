@@ -136,7 +136,7 @@ function CreatePostForm() {
             ))}
           </Container>
         </Col>
-        <Col md={5} lg={4} className="p-0 p-md-2 d-none d-md-block">
+        <Col className="p-0 p-md-2 d-md-block" md={5} lg={4}> 
           <Container
             className={`${appStyles.Content} d-flex justify-content-center align-items-center`}
           >
