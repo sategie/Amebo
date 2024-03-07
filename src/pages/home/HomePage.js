@@ -3,7 +3,9 @@ import { useActiveUser } from '../../contexts/ActiveUserContext';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import styles from '../../styles/HomePage.module.css';
 
+// HomePage component for displaying the app's home page
 const HomePage = () => {
+  // useActiveUser hook to check if a user is currently logged in
   const activeUser = useActiveUser();
 
   return (
@@ -11,6 +13,7 @@ const HomePage = () => {
       <Card.Img variant="top" className = {styles.HeroImage} src= {'https://res.cloudinary.com/dvfxz4as6/image/upload/v1706989636/parrot-2659023_1280_qououc.jpg'} />
       <Card.Body>
         {activeUser ? (
+          // If a user is logged in, display a personalized welcome message
           <>
         <Card.Body>
             <Card.Title className = {styles.HomeWelcome} >Welcome to the Amebo App {activeUser.username}</Card.Title>
@@ -38,6 +41,7 @@ const HomePage = () => {
             
           </>
         ) : (
+          // If no user is logged in, display a generic welcome message
           <>
         <Card.Body>
             <Card.Title className = {styles.HomeWelcome} >Welcome to the Amebo App</Card.Title>
