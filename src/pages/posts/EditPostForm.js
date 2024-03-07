@@ -13,28 +13,36 @@ import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
 function EditPostForm() {
+    // Error state for form validation feedback
     const [errors, setErrors] = useState({});
     
+    // State to hold post data
     const[postInfo, setPostInfo] = useState({
         title:"",
         post_content:"",
         image:"",
     });
 
+    // Destructuring to extract individual post attributes
     const { title, post_content, image } = postInfo;
 
+    // useRef hook for handling the image input
     const imageInput = useRef(null)
 
+    // useHistory hook for redirecting a user after form submission
     const history = useHistory(null)
 
+    // useParams hook to get the post id from URL
     const {id} = useParams();
 
+    // useEffect hook to fetch the post's data when the component mounts
     useEffect(() => {
         const handleMount = async () => {
           try {
             const { data } = await axiosReq.get(`/posts/${id}/`);
             const { title, post_content, image, own_post } = data;
     
+            // If own post, populate form, else redirect to homepage
             own_post ? setPostInfo({ title, post_content, image }) : history.push("/");
           } catch (err) {
             console.log(err);
@@ -44,6 +52,7 @@ function EditPostForm() {
         handleMount();
       }, [history, id]);
 
+    // Handler for handling changes in form input
     const handleChange = (event) => {
         setPostInfo({
             ...postInfo,
@@ -51,6 +60,7 @@ function EditPostForm() {
         });
     };
 
+    // Handler for handling changes in image input
     const handleImageChange = (event) => {
         if (event.target.files.length) {
             URL.revokeObjectURL(image);
@@ -62,6 +72,7 @@ function EditPostForm() {
     };
 
 
+    // Handler for handling the form submission
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -69,14 +80,18 @@ function EditPostForm() {
         formData.append("title", title);
         formData.append("post_content", post_content);
     
+        // Append image file if it has been selected
         if (imageInput?.current?.files[0]) {
           formData.append("image", imageInput.current.files[0]);
         }
     
         try {
+          // API call which attempts to update the post data
           await axiosReq.put(`/posts/${id}/`, formData);
+          // Redirect to the post's page if successful
           history.push(`/posts/${id}`);
         } catch (err) {
+          // Log errors and set errors state if update fails
           console.log(err);
           if (err.response?.status !== 401) {
             setErrors(err.response?.data);
@@ -84,10 +99,9 @@ function EditPostForm() {
         }
       };
 
-
-
-
-    return (
+    
+      // Render form for editing a post
+      return (
       <Form className={styles.Input} onSubmit={handleSubmit}>
         <Row>
           <Col className="py-2 p-0 p-md-2" md={7} lg={8}>

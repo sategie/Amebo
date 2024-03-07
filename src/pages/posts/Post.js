@@ -9,6 +9,7 @@ import styles from '../../styles/Post.module.css';
 import { DropdownOption } from '../../components/DropdownOption';
 
 const Post = (props) => {
+    // Destructuring to extract individual post attributes
     const {
         id,
         profile_id,
@@ -25,16 +26,19 @@ const Post = (props) => {
         setPosts
     } = props;
 
+    // Use ActiveUser context to check if the post belongs to the currently logged in user
     const activeUser = useActiveUser();
 
     const is_own_post = activeUser?.username === user;
 
     const history = useHistory();
 
+    // Handler to navigate to post edit page
     const handleEdit = () => {
         history.push(`/posts/${id}/edit`);
     };
 
+    // Handler to handle post deletion
     const handleDelete = async () => {
         try {
           await axiosRes.delete(`/posts/${id}/`);
@@ -44,7 +48,8 @@ const Post = (props) => {
         }
       };
 
-    const handleLike = async() => {
+    // Handler to handle likes on a post
+      const handleLike = async() => {
         try{
             const {data} = await axiosRes.post("/likes/", {
                 post: id});
@@ -61,6 +66,7 @@ const Post = (props) => {
         }
     };
 
+    // Handler to handle unliking a post
     const handleUnlike = async () => {
         try {
           await axiosRes.delete(`/likes/${like_id}/`);
@@ -77,7 +83,7 @@ const Post = (props) => {
         }
       }
 
-
+   // Rendering the post component
   return (
     <Card className={styles.Post}>
         <Card.Body>

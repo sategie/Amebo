@@ -15,22 +15,29 @@ import { useRedirect } from "../../hooks/useRedirect";
 import { useActiveUser } from "../../contexts/ActiveUserContext";
 
 function CreatePostForm() {
+  // Redirect unauthenticated users
   useRedirect("loggedOut");
   const activeUser = useActiveUser();
+  // Error state for form validation feedback
   const [errors, setErrors] = useState({});
 
+  // State for handling post data
   const [postInfo, setPostInfo] = useState({
     title: "",
     post_content: "",
     image: "",
   });
 
+  // Destructuring post data
   const { title, post_content, image } = postInfo;
 
+  // useRef hook for handling the image input
   const imageInput = useRef(null);
 
+  // useHistory hook for redirecting a user after form submission
   const history = useHistory(null);
 
+  // Event handler to handle changes in form fields and update the state
   const handleChange = (event) => {
     setPostInfo({
       ...postInfo,
@@ -38,6 +45,7 @@ function CreatePostForm() {
     });
   };
 
+  // Event handler to handle image changes and update the state
   const handleImageChange = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
@@ -48,18 +56,22 @@ function CreatePostForm() {
     }
   };
 
+  // Event handler to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
 
+    // Appends text fields to formData
     formData.append("title", title);
     formData.append("post_content", post_content);
 
+    // If an image file is selected, append it to formData
     if (imageInput.current && imageInput.current.files[0]) {
       formData.append("image", imageInput.current.files[0]);
     }
 
     try {
+      // Check for duplicate titles by fetching existing posts
       const { data: existingPosts } = await axiosReq.get(
         `/posts/?owner=${activeUser?.username}`
       );
@@ -69,7 +81,9 @@ function CreatePostForm() {
       if (isDuplicate) {
         setErrors({ title: ["You already have an existing post with the same title."] });
       } else {
+        // If not duplicate, post the new post data
         const { data } = await axiosReq.post("/posts/", formData);
+        // Redirect user to the newly created post
         history.push(`/posts/${data.id}`);
       }
     } catch (err) {
