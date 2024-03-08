@@ -14,11 +14,13 @@ import { useActiveUser } from "../../contexts/ActiveUserContext";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
+// Component for handling password change feature
 const PasswordForm = () => {
   const history = useHistory();
   const { id } = useParams();
   const activeUser = useActiveUser();
 
+  // State for user data and errors
   const [userData, setUserData] = useState({
     new_password1: "",
     new_password2: "",
@@ -27,6 +29,7 @@ const PasswordForm = () => {
 
   const [errors, setErrors] = useState({});
 
+  // Handle input field changes and update state
   const handleChange = (event) => {
     setUserData({
       ...userData,
@@ -34,6 +37,7 @@ const PasswordForm = () => {
     });
   };
 
+  // Check if user is authorized for the password change
   useEffect(() => {
     if (activeUser?.profile_id?.toString() !== id) {
       // redirect user to home page if not own profile
@@ -41,9 +45,11 @@ const PasswordForm = () => {
     }
   }, [activeUser, history, id]);
 
+  // Handle password change form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      // Attempt to post new passwords to the API backend
       await axiosRes.post("/dj-rest-auth/password/change/", userData);
       history.goBack();
     } catch (err) {

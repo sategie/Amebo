@@ -21,10 +21,14 @@ import appStyles from "../../App.module.css";
 const EditProfileForm = () => {
   const activeUser = useActiveUser();
   const setActiveUser = useSetActiveUser();
+  // Retrieve profile ID from URL
   const { id } = useParams();
+  // Hook for accessing the history for navigation
   const history = useHistory();
+  // Ref to hold the file input
   const imageFile = useRef();
 
+  // State to hold form data and errors
   const [profileData, setProfileData] = useState({
     name: "",
     content: "",
@@ -34,10 +38,12 @@ const EditProfileForm = () => {
 
   const [errors, setErrors] = useState({});
 
+  // Hook to load profile data when component mounts or when id changes
   useEffect(() => {
     const handleMount = async () => {
       if (activeUser?.profile_id?.toString() === id) {
         try {
+          // API request to fetch profile data
           const { data } = await axiosReq.get(`/profiles/${id}/`);
           const { name, content, image } = data;
           setProfileData({ name, content, image });
@@ -53,6 +59,7 @@ const EditProfileForm = () => {
     handleMount();
   }, [activeUser, history, id]);
 
+  // Handler to handle form field changes
   const handleChange = (event) => {
     setProfileData({
       ...profileData,
@@ -71,18 +78,22 @@ const EditProfileForm = () => {
     }
 
     try {
+      // Attempt to update profile data
       const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
       setActiveUser((activeUser) => ({
         ...activeUser,
         profile_image: data.image,
       }));
+      // Return to the previous page
       history.goBack();
     } catch (err) {
+       // Handle errors and set form errors
       console.log(err);
       setErrors(err.response?.data);
     }
   };
 
+  // JSX for cancel and save buttons
   const textFields = (
     <>
       {errors?.content?.map((message, idx) => (

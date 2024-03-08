@@ -76,7 +76,7 @@ function PostsList() {
                       <span className="sr-only">Loading...</span>
                     </Spinner>}
                     hasMore={!!posts.next}
-                    next={() => fetchMoreData(posts, setPosts)}  
+                    next={() => fetchMoreData(posts, setPosts)}
                   />
                   
                 ) : (
