@@ -16,20 +16,27 @@ import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataCon
 import { ProfileEditDropdown } from "../../components/DropdownOption";
 
 function ProfilePage() {
+  // State to manage loading status
   const [hasLoaded, setHasLoaded] = useState(false);
+  // Get the active user's information
   const activeUser = useActiveUser();
+  // Extract profile ID from URL
   const {id} = useParams();
   const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData();
+  // Get data for profile page from context
   const { pageProfile } = useProfileData();
   const [profile] = pageProfile.results;
+  // Check if the profile belongs to the active user
   const own_profile = activeUser?.username === profile?.user;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // API request to get profile data based on id
         const [{ data: pageProfile }] = await Promise.all([
           axiosReq.get(`/profiles/${id}/`),
         ]);
+        // Update profile data in context
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
@@ -42,6 +49,7 @@ function ProfilePage() {
     fetchData();
   }, [id, setProfileData]);
 
+  // Rendering logic to display edit dropdown for own profile if defined conditions are met
   const mainProfile = (
     <>
     {profile?.own_profile && <ProfileEditDropdown id={profile?.id} />}
@@ -80,6 +88,7 @@ function ProfilePage() {
           </Row>
         </Col>
         <Col lg={3} className="text-lg-right">
+          {/* Follow/unfollow button for profiles of other users */}
           {activeUser &&
             !own_profile &&
             (profile?.following_id ? (
@@ -107,6 +116,7 @@ function ProfilePage() {
     <Row>
       <Col className="py-2 p-0 p-lg-2" lg={12}>
         <Container className={appStyles.Content}>
+          {/* Conditionally render profile data or loading spinner */}
           {hasLoaded ? (
             <>
               {mainProfile}

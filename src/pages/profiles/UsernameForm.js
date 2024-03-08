@@ -18,15 +18,21 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
 const UsernameForm = () => {
+  // State for managing user input and server-side errors
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState({});
 
+  // useHistory hook for managing user navigation history
   const history = useHistory();
+  // useParams hook to extract URL parameters
   const { id } = useParams();
 
+  // Get the active user's information
   const activeUser = useActiveUser();
+  // Function to update the active user context
   const setActiveUser = useSetActiveUser();
 
+  // useEffect hook to populate form data and redirect unauthorized users
   useEffect(() => {
     if (activeUser?.profile_id?.toString() === id) {
       setUsername(activeUser.username);
@@ -35,18 +41,23 @@ const UsernameForm = () => {
     }
   }, [activeUser, history, id]);
 
+  // Handler to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      // API call to update user's username
       await axiosRes.put("/dj-rest-auth/user/", {
         username,
       });
+      // Update active user context with new username
       setActiveUser((prevUser) => ({
         ...prevUser,
         username,
       }));
+      // Return to the previous page after successfully saving
       history.goBack();
     } catch (err) {
+      // Handle errors by setting error state
       console.log(err);
       setErrors(err.response?.data);
     }
@@ -56,6 +67,7 @@ const UsernameForm = () => {
     <Row>
       <Col className="py-2 mx-auto text-center" md={6}>
         <Container className={appStyles.Content}>
+          {/* Form for changing username */}
           <Form onSubmit={handleSubmit} className="my-2">
             <Form.Group>
               <Form.Label>Change Username</Form.Label>
