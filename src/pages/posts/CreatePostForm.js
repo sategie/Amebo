@@ -94,6 +94,7 @@ function CreatePostForm() {
     }
   };
 
+  // Render the CreatePostForm in the browser
   return (
     <Form className={styles.Input} onSubmit={handleSubmit}>
       <Row>
@@ -101,6 +102,7 @@ function CreatePostForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
+            {/* Post title input */}
             <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>
               <Form.Control
@@ -112,11 +114,13 @@ function CreatePostForm() {
                 onChange={handleChange}
               />
             </Form.Group>
+            {/* Error display for title */}
             {errors?.title?.map((message, idx) => (
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
             ))}
+            {/* Post content input */}
             <Form.Group controlId="post_content">
               <Form.Label>Description</Form.Label>
               <Form.Control
@@ -129,11 +133,13 @@ function CreatePostForm() {
                 onChange={handleChange}
               />
             </Form.Group>
+            {/* Error display for post content */}
             {errors?.post_content?.map((message, idx) => (
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
             ))}
+            {/* Image upload input */}
             <Form.Group>
               <Form.File
                 id="image-upload"
@@ -142,7 +148,14 @@ function CreatePostForm() {
                 onChange={handleImageChange}
                 ref={imageInput}
               />
+              {/* Show image preview when uploading an image file */}
+              {image && (
+                <div className="mt-3">
+                  <img src={image} alt="Preview" style={{ maxWidth: "100%", height: "auto" }} />
+                </div>
+              )}
             </Form.Group>
+            {/* Error display for image */}
             {errors?.image?.map((message, idx) => (
               <Alert variant="warning" key={idx}>
                 {message}
@@ -154,6 +167,7 @@ function CreatePostForm() {
           <Container
             className={`${appStyles.Content} d-flex justify-content-center align-items-center`}
           >
+            {/* Cancel button */}
             <Button
               className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.ButtonArea}`}
               onClick={() => history.goBack()}
@@ -161,6 +175,7 @@ function CreatePostForm() {
               Cancel
             </Button>
 
+            {/* Submit button */}
             <Button
               className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.ButtonArea}`}
               type="submit"
