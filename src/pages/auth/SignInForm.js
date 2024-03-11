@@ -10,22 +10,29 @@ import axios from "axios";
 import { useSetActiveUser } from "../../contexts/ActiveUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 
+// SignInForm component for handling sign-in functionality
 const SignInForm = () => {
+  // Custom hook to set the active user after a successful sign-in
     const setActiveUser = useSetActiveUser();
+    // Redirect user if already logged in
     useRedirect("loggedIn");
 
 
+    // State for managing sign-in form inputs
     const [signInInfo, setSignInInfo] = useState({
         username: "",
         password:"",
     });
-    // Destructuring used
+    // Destructuring used here
     const {username, password} = signInInfo;
 
+    // State for managing form error messages
     const [errors, setErrors] = useState({});
 
+    // useHistory hook to navigate the user after a successful signin
     const history = useHistory();
 
+    // Handler to handle form input changes
     const handleChange = (event) => {
         setSignInInfo({
             ...signInInfo,
@@ -34,7 +41,9 @@ const SignInForm = () => {
         });
     };
 
+    // Handler to handle form submission. Sends post request to the backend.
     const handleSubmit = async (event) => {
+      // Prevents default form behaviour
         event.preventDefault();
         try {
             const {data} = await axios.post("/dj-rest-auth/login/", signInInfo);

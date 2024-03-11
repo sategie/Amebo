@@ -9,20 +9,26 @@ import { Form, Button, Image, Col, Row, Container, Alert, } from "react-bootstra
 import axios from "axios";
 import { useRedirect } from "../../hooks/useRedirect";
 
+// SignUpForm component for handling signup functionality
 const SignUpForm = () => {
+  // Custom hook to redirect logged in users
     useRedirect("loggedIn")
+    // State to manage signup information
     const [signUpInfo, setSignUpInfo] = useState({
         username: "",
         password1:"",
         password2:"",
     });
-    // Destructuring used
+    // Destructuring used in order to access state values easily
     const {username, password1, password2} = signUpInfo;
 
+    // State to handle and display errors
     const [errors, setErrors] = useState({});
 
+    // useHistory hook to navigate the user after a successful signup
     const history = useHistory();
 
+    // Handler to handle form input changes
     const handleChange = (event) => {
         setSignUpInfo({
             ...signUpInfo,
@@ -31,10 +37,13 @@ const SignUpForm = () => {
         });
     };
 
+    // Handler to handle form submission. Sends post request to the backend.
     const handleSubmit = async (event) => {
+      // Prevents default form behaviour
         event.preventDefault();
         try {
             await axios.post("/dj-rest-auth/registration/", signUpInfo);
+            // Redirects to login page after successful signup
             history.push("/login");
         } catch(err) {
             // Use optional chaining to handle error display
