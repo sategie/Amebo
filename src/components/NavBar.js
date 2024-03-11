@@ -9,21 +9,28 @@ import axios from "axios";
 import useOutsideClickToggle from "../hooks/useOutsideClickToggle";
 
 
+// NavBar component
 const NavBar = () => {
+  // Fetch the active user data and methods to set active user
     const activeUser = useActiveUser();
     const setActiveUser = useSetActiveUser();
+    // Use custom hook to handle expanded state and reference for the toggle button
     const {expanded, setExpanded, ref} = useOutsideClickToggle();
  
 
+    // Asynchronous event handler function to handle the logout process
     const handleLogOut = async() => {
         try{
+          // Attempt to make a post request to logout endpoint
             await axios.post("dj-rest-auth/logout/");
+            // If successful, clear the active user
             setActiveUser(null);
         } catch(err) {
             console.log(err);
         }
     };
 
+    // Links and icons to display when the user is logged in
     const loggedInIcons = (
         <>
         <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/create-post">
@@ -46,6 +53,7 @@ const NavBar = () => {
     )
 
 
+    // Links and icons to display when the user is logged out
     const loggedOutIcons = (
         <>
             <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/login">
@@ -58,7 +66,7 @@ const NavBar = () => {
       );
 
 
-
+  // Rendering the NavBar
   return (
     <Navbar expanded = {expanded} className={styles.NavBar} expand="lg" fixed="top">
         <NavLink to="/">

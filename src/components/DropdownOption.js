@@ -4,19 +4,25 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import styles from "../styles/DropdownOption.module.css";
 
 
+// Custom component for rendering the dots icon used for opening the dropdown menu
 const DotsIcon = React.forwardRef(({ onClick }, ref) => (
   <i
     className="fas fa-ellipsis-v"
+     // Pass ref for direct DOM access
     ref={ref}
     onClick={(e) => {
+      // Prevent default action of the event
       e.preventDefault();
+      // Handler to handle clicking the dots icon
       onClick(e);
     }}
   />
 ));
 
+// Dropdown option component which provides edit and delete options
 export const DropdownOption = ({ handleEdit, handleDelete }) => {
   return (
+    // Dropdown component wrapper for styling purposes
     <Dropdown className="ml-auto" drop="right">
       <Dropdown.Toggle as={DotsIcon} />
 
@@ -43,6 +49,7 @@ export const DropdownOption = ({ handleEdit, handleDelete }) => {
   );
 };
 
+// Component for rendering a profile dropdown menu
 export function ProfileEditDropdown({ id }) {
     const history = useHistory();
     return (
