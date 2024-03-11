@@ -20,13 +20,15 @@ import NotificationsPage from "./pages/notifications/NotificationsPage";
 
 function App() {
 
-
-
   return (
     <div className={styles.App}>
+      {/* Nav bar displayed at the top of all pages */}
         <NavBar />
+        {/* Main content area with routing handling */}
         <Container className={styles.Page}>
+          {/* Switch between routes depending on the current URL */}
             <Switch>
+              {/* Route components for different pages */}
             <Route exact path="/" render={() => <HomePage />} />
             <Route exact path="/posts" render={() => <PostsList />} />
             <Route exact path="/login" render={() => <SignInForm />} />
@@ -41,6 +43,7 @@ function App() {
             <Route exact path="/profiles/:id/edit/password" render={() => <PasswordForm />} />
             <Route exact path="/profiles/:id/edit" render={() => <EditProfileForm />} />
             
+            {/* Fallback route for non-existent paths */}
             <Route render={() => <p>Invalid Page!</p>} />
             </Switch>
         </Container>
