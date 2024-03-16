@@ -3,6 +3,7 @@ import { axiosReq } from '../../api/axiosDefaults';
 import Profile from '../profiles/Profile';
 import { useProfileData, useSetProfileData } from '../../contexts/ProfileDataContext';
 import { useActiveUser } from '../../contexts/ActiveUserContext';
+import { Spinner } from 'react-bootstrap';
 import appStyles from '../../App.module.css';
 
 // FollowedUsers component to display profiles that the active user follows
@@ -12,8 +13,7 @@ const FollowedUsers = () => {
     // Update profile data using setState
     const { setProfileData } = useSetProfileData();
     // State to track the loading process
-    const [hasLoaded, setHasLoaded] = useState(false);
-
+    const [loading, setLoading] = useState(true);
     const activeUser = useActiveUser();
 
     useEffect(() => {
@@ -27,7 +27,6 @@ const FollowedUsers = () => {
                     userProfiles.push(profile);
                 }
             }
-
             // Update the context state with the filtered followed users
             setProfileData(prevState => ({
                 ...prevState,
@@ -39,41 +38,38 @@ const FollowedUsers = () => {
         async function fetchFollowedUsers() {
             try {
                 // API Request to fetch profiles
+                setLoading(true);
                 const {data} = await axiosReq.get(`/profiles/`);
-
                 // Filter the received profiles to get the profiles being followed
                 filterProfiles(data);
-                setHasLoaded(true);
             } catch (err) {
-                // Log errors if the request fails
                 console.log(err);
+            } finally {
+                // Set loading state to false
+                setLoading(false);
             }
         }
 
-        // Initialize fetching process and reset loading state
-        setHasLoaded(false);
         fetchFollowedUsers();
     }, [activeUser, setProfileData]);
 
+    // Render followed users to the browser
     return (
-      <div className={`my-3 d-flex align-items-center ${"flex-column"}`}>
-          {hasLoaded ? (
-              followedUsers?.results?.length ? (
+      <div className={`my-3 d-flex align-items-center flex-column`}>
+          {loading ? (
+        <Spinner animation="border" variant="success" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+          ) : followedUsers?.results?.length ? (
                    followedUsers.results.map(profile => (
                     // Render each followed user's profile using the Profile component
                       <Profile key={profile.id} profile={profile} />
                   ))
               ) : (
-                // Display message if the active user does not follow anyone
                   <div className={`${appStyles.Content}`}>
                       <p>No users followed.</p>
                   </div>
-              )
-          ) : (
-              <div className={`${appStyles.Content}`}>
-                  <p>Loading...</p>
-              </div>
-          )}
+              )}
       </div>
   );
 }
