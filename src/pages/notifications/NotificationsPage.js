@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
+import { useActiveUser } from '../../contexts/ActiveUserContext';
 import axios from 'axios';
 import styles from "../../styles/NotificationsPage.module.css";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const NotificationsPage = () => {
   // State for storing notifications
@@ -10,8 +12,15 @@ const NotificationsPage = () => {
   const [error, setError] = useState('');
   // State for controlling the loading state
   const [loading, setLoading] = useState(true);
+  const activeUser = useActiveUser();
+  const history = useHistory()
 
   useEffect(() => {
+    if (!activeUser) {
+      // Redirect to home page if there's no active user
+      history.push('/');
+      return;
+    }
     const fetchNotifications = async () => {
       try {
         setLoading(true);
@@ -30,7 +39,8 @@ const NotificationsPage = () => {
       }
     };
     fetchNotifications();
-  }, []);
+    // Add activeUser and as a dependency to re-run useEffect when activeUser changes
+  }, [activeUser, history]);
 
   // Render notifications to the browser
   return (
