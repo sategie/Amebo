@@ -40,7 +40,7 @@ const NotificationsPage = () => {
             {/* Displaying the notification message */}
             <p className={!notification.seen ? styles.unseenText : ''}>{notification.message}</p>
             {/* Format and display the notification creation date */}
-            <small>Received at: {new Date(notification.created_date).toLocaleString()}</small>
+            <small>Received on: {new Date(notification.created_date).toLocaleString()}</small>
           </ListGroup.Item>
         )) : <p>No notifications found.</p>}
       </ListGroup>
