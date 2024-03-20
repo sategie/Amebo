@@ -60,7 +60,7 @@ const FollowedUsers = () => {
         <Spinner animation="border" variant="success" role="status">
           <span className="sr-only">Loading...</span>
         </Spinner>
-          ) : followedUsers?.results?.length ? (
+          ) : followedUsers.results.length ? (
                    followedUsers.results.map(profile => (
                     // Render each followed user's profile using the Profile component
                       <Profile key={profile.id} profile={profile} />
@@ -75,3 +75,4 @@ const FollowedUsers = () => {
 }
 
 export default FollowedUsers;
+

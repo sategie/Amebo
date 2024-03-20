@@ -4,10 +4,12 @@ import { useActiveUser } from '../../contexts/ActiveUserContext';
 import axios from 'axios';
 import styles from "../../styles/NotificationsPage.module.css";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 const NotificationsPage = () => {
   // State for storing notifications
-  const [notifications, setNotifications] = useState([]);
+  const [notifications, setNotifications] = useState({results: [], next: null});
   // State for storing possible errors
   const [error, setError] = useState('');
   // State for controlling the loading state
@@ -27,7 +29,7 @@ const NotificationsPage = () => {
         // Fetch notifications from the backend server
         const response = await axios.get('/notifications');
         // Update the notifications state with the fetched data
-        setNotifications(response.data.results);
+        setNotifications(response.data);
         // Clear error state if no error is found
         setError('');
       } catch (error) {
@@ -54,16 +56,29 @@ const NotificationsPage = () => {
           <span className="sr-only">Loading...</span>
         </Spinner>
       ) : (
-        <ListGroup>
-          {/* Check if there are notifications to be displayed */}
-          {notifications.length > 0 ? notifications.map(notification => (
-            <ListGroup.Item key={notification.id} className={styles.unseenNotification}>
-              <p className={!notification.seen ? styles.unseenText : ''}>{notification.message}</p>
-              {/* Format and display the notification creation date */}
-              <small>Received on: {new Date(notification.created_date).toLocaleString()}</small>
-            </ListGroup.Item>
-          )) : <p>No notifications found.</p>}
-        </ListGroup>
+        <InfiniteScroll
+          dataLength={notifications.results.length}
+          next={() => fetchMoreData(notifications, setNotifications)}
+          hasMore={!!notifications.next}
+          loader={<Spinner animation="border" variant="success" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>}
+          endMessage={
+            <p style={{ textAlign: "center" }}>
+              <b>You have seen all notifications.</b>
+            </p>
+          }
+        >
+          <ListGroup>
+            {notifications.results.length > 0 ? notifications.results.map(notification => (
+              <ListGroup.Item key={notification.id} className={styles.unseenNotification}>
+                <p className={!notification.seen ? styles.unseenText : ''}>{notification.message}</p>
+                {/* Format and display the notification creation date */}
+                <small>Received on: {new Date(notification.created_date).toLocaleString()}</small>
+              </ListGroup.Item>
+            )) : <p>No notifications found.</p>}
+          </ListGroup>
+        </InfiniteScroll>
       )}
     </Container>
   );
