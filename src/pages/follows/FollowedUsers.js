@@ -28,7 +28,6 @@ const FollowedUsers = () => {
                 userProfiles.push(profile);
             }
         }
-        console.log("Filtered profiles:", userProfiles);
         // Update context to include only followed profiles
         setProfileData(prevState => ({
             ...prevState,

@@ -57,28 +57,34 @@ const NotificationsPage = () => {
         </Spinner>
       ) : (
         <InfiniteScroll
-          dataLength={notifications.results.length}
-          next={() => fetchMoreData(notifications, setNotifications)}
-          hasMore={!!notifications.next}
-          loader={<Spinner animation="border" variant="success" role="status">
-            <span className="sr-only">Loading...</span>
-          </Spinner>}
-          endMessage={
-            <p style={{ textAlign: "center" }}>
-              <b>You have seen all notifications.</b>
-            </p>
-          }
-        >
-          <ListGroup>
-            {notifications.results.length > 0 ? notifications.results.map(notification => (
-              <ListGroup.Item key={notification.id} className={styles.unseenNotification}>
-                <p className={!notification.seen ? styles.unseenText : ''}>{notification.message}</p>
-                {/* Format and display the notification creation date */}
-                <small>Received on: {new Date(notification.created_date).toLocaleString()}</small>
-              </ListGroup.Item>
-            )) : <p>No notifications found.</p>}
-          </ListGroup>
-        </InfiniteScroll>
+  dataLength={notifications.results.length}
+  next={() => fetchMoreData(notifications, setNotifications)}
+  hasMore={!!notifications.next}
+  loader={<Spinner animation="border" variant="success" role="status">
+    <span className="sr-only">Loading...</span>
+  </Spinner>}
+  endMessage={
+    // Only show the ending message if there are notifications
+    notifications.results.length > 0 ? (
+      <p style={{ textAlign: "center" }}>
+        <b>You have seen all notifications.</b>
+      </p>
+    ) : null
+  }
+>
+  <ListGroup>
+    {notifications.results.length > 0 ? (
+      notifications.results.map(notification => (
+        <ListGroup.Item key={notification.id} className={styles.unseenNotification}>
+          <p className={!notification.seen ? styles.unseenText : ''}>{notification.message}</p>
+          <small>Received on: {new Date(notification.created_date).toLocaleString()}</small>
+        </ListGroup.Item>
+      ))
+    ) : (
+      <p>No notifications found.</p>
+    )}
+  </ListGroup>
+</InfiniteScroll>
       )}
     </Container>
   );
