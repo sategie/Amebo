@@ -79,13 +79,13 @@ The skeleton plane shows the wireframes for the project. The wireframes are disp
 
 ![Image of Posts Wireframes](readme_assets/posts_wf.png)
 
-![Image of Posts_logged_in Wireframes](readme_assets/posts_logged_in_wf.png)
-
-![Image of Post Creation Wireframes](readme_assets/createpost_wf.png)
+![Image of Post Creation Wireframes](readme_assets/create_post_wf.png)
 
 ![Image of Comments Wireframes](readme_assets/comments_wf.png)
 
-![Image of Followed Users Wireframes](readme_assets/followedusers_wf.png)
+![Image of Followed Users Wireframes](readme_assets/followed_users_wf.png)
+
+![Image of Notifications Wireframes](readme_assets/notifications_wf.png)
 
 ![Image of Profile Wireframes](readme_assets/profile_wf.png)
 
@@ -203,6 +203,17 @@ If the **unfollow** button is selected, the user is removed from the Followed Us
 
 ![Image of Followed Users page](readme_assets/followed_users.png)
 
+### Notifications
+
+A logged in user can click on **Notifications** in order to view notifications of the following: comments by other users on posts made by the user, likes on the posts made by the user, and new followers of the user.
+
+This page uses infinite scrolling .i.e more notifications are loaded (if any) when the user scrolls down the page. If there are no more notifications, a message is displayed at the bottom informing that the user has seen all notifications.
+
+![Image of Notifications page](readme_assets/notifications.png)
+
+![Image of Notifications page](readme_assets/notifications_end.png)
+
+
 ### Logout
 
 Finally, a logged in user has the option to click on the **Logout** button in order to log out of the app.
@@ -212,9 +223,11 @@ Logging out of the app returns the user to the landing page.
 
 ## Features Left to Implement/Improve
 
-### Notifications
+### Notification Links
 
-There is a notifications page in the app. However, clicking on this shows a message to the user informing that the feature is under construction. When this feature is implemented in the project, the notifications for new followers, comments and likes will appear here.
+The Notifications page currently shows all notifications when another user comments on the authenticated user's post, likes the post and follows the user. 
+
+I plan to create clickable links and wire each notification to the respective page so that a user is redirected when a single notification is clicked.
 
 ### App Search Bar
 
@@ -224,9 +237,9 @@ I plan to add a search bar in the app navigation menu which would be used to sea
 
 ### Infinite Scrolling
 
-Infinite Scrolling is already set up in the app. However, this is only used in the posts section when viewing posts.
+Infinite Scrolling is already set up in the app. However, this is only used in the Posts and Notifications sections.
 
-I plan to extend this feature to Comments page, Followed Users page as well as the Notifications page (when this has been implemented).
+I plan to extend this feature to the Comments page and Followed Users page.
 
 
 ### Frameworks, Libraries and Dependencies
