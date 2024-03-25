@@ -59,14 +59,6 @@ const EditProfileForm = () => {
     handleMount();
   }, [activeUser, history, id]);
 
-  // Handler to handle form field changes
-  const handleChange = (event) => {
-    setProfileData({
-      ...profileData,
-      [event.target.name]: event.target.value,
-    });
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -87,7 +79,7 @@ const EditProfileForm = () => {
       // Return to the previous page
       history.goBack();
     } catch (err) {
-       // Handle errors and set form errors
+      // Handle errors and set form errors
       console.log(err);
       setErrors(err.response?.data);
     }
