@@ -2,6 +2,8 @@
 
 ![Image of Landing Page showing responsiveness](readme_assets/responsive.png)
 
+[View the live project here.](https://amebo-a073f6ea429b.herokuapp.com/)
+
 ## Project Goals
 
 The Amebo app was designed as a social media platform to share interesting content with other people. It promotes social interaction by giving users the ability to comment on posts, like posts and follow users whose posts they find interesting.
